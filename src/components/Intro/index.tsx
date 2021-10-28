@@ -1,5 +1,9 @@
 import React, { useContext } from 'react';
 
+// styled components
+import { MainHeading, Tagline } from './styles';
+import { Button, InnerWrapper } from '../../styles/lib';
+
 // context
 import GeneratorContext from '../../context/generatorContext';
 
@@ -12,19 +16,23 @@ const Intro = () => {
 	return (
 		<>
 			{ctx?.state.currentPhase === PHASE_INTRO ? (
-				<div>
-					<h1>Borderlands Playthrough Generator</h1>
+				<InnerWrapper>
+					<MainHeading>Borderlands Playthrough Generator</MainHeading>
 
-					<h2>
+					<Tagline>
 						Looking for a fun and exciting new way to play through your favourite Borderlands game?{' '}
 						<br />
 						Use this app to generate it for you!
-					</h2>
+					</Tagline>
 
-					<button onClick={() => ctx.dispatch({ type: 'SET_PHASE_TO_GAME' })} type='button'>
+					<Button
+						mode='boundary'
+						onClick={() => ctx.dispatch({ type: 'SET_PHASE_TO_GAME' })}
+						type='button'
+					>
 						Get Started
-					</button>
-				</div>
+					</Button>
+				</InnerWrapper>
 			) : null}
 		</>
 	);

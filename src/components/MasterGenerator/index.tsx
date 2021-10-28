@@ -8,15 +8,18 @@ import Results from '../Results';
 import RunType from '../RunType';
 import VaultHunter from '../VaultHunter';
 
+// styled components
+import MasterGeneratorWrapper from './styles';
+
 const MasterGenerator = () => (
-	<div className='MasterGeneratorWrapper'>
+	<MasterGeneratorWrapper>
 		<Intro />
 		<Game />
 		<VaultHunter />
 		<RunType />
 		<DeterminePlaythrough />
 		<Results />
-	</div>
+	</MasterGeneratorWrapper>
 );
 
 export default MasterGenerator;

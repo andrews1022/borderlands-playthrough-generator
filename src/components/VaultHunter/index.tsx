@@ -5,7 +5,7 @@ import GeneratorContext from '../../context/generatorContext';
 
 // data
 import { PHASE_VAULT_HUNTER } from '../../data/constants';
-import vaultHunters from '../../data/vault-hunters';
+import vaultHunters from '../../data/vaultHunters';
 
 // utils
 import getRandomArrayIndex from '../../utils/getRandomArrayIndex';

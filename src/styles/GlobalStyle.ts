@@ -45,6 +45,10 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
   }
 
+  p {
+    line-height: 1.45;
+  }
+
   a {
     &:link,
     &:visited {
