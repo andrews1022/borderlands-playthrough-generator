@@ -87,6 +87,10 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     zoom: 1;
   }
+
+  #root {
+    height: 100vh;
+  }
 `;
 
 export default GlobalStyle;

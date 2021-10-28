@@ -37,6 +37,7 @@
 		"linebreak-style": "off",
 		"max-len": "warn",
 		"no-confusing-arrow": "off",
+		"no-mixed-spaces-and-tabs": "off",
 		"no-multiple-empty-lines": "warn",
 		"no-multi-spaces": "warn",
 		"no-tabs": "off",

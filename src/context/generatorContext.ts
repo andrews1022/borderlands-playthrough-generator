@@ -1,5 +1,13 @@
-import { createContext } from 'react';
+import React, { createContext } from 'react';
 
-// const Context = createContext();
+// reducer types
+import { GeneratorActions, GeneratorState } from '../reducer/generatorReducer';
 
-// export default Context;
+interface AppContextInterface {
+	state: GeneratorState;
+	dispatch: React.Dispatch<GeneratorActions>;
+}
+
+const GeneratorContext = createContext<AppContextInterface | null>(null);
+
+export default GeneratorContext;

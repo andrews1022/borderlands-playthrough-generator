@@ -9,7 +9,7 @@ import {
 
 export interface GeneratorState {
 	currentPhase: string;
-	modifierDescription: string;
+	modifierDescription: string | null;
 	selectedGame: string;
 	selectedModifier: string;
 	selectedRunType: string;
@@ -30,7 +30,7 @@ export type GeneratorActions =
 	| { type: 'SELECT_GAME'; payload: string }
 	| { type: 'SELECT_RUN_TYPE'; payload: string }
 	| { type: 'SELECT_VAULT_HUNTER'; payload: string }
-	| { type: 'SET_MODIFIER'; payload: { name: string; description: string } }
+	| { type: 'SET_MODIFIER'; payload: { name: string; description: string | null } }
 	| { type: 'SET_PHASE_TO_GAME' }
 	| { type: 'SET_PHASE_TO_RESULTS' };
 
