@@ -29,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     margin: 0;
     padding: 0;
-    text-transform: lowercase;
   }
 
   button, 

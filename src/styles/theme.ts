@@ -17,14 +17,14 @@ const theme = {
 	},
 	shades: {
 		white: '#fff',
-		whiteSmoke: '#efefef',
+		whiteSmoke: '#f5f5f5',
 		black: '#000'
 	},
 	colors: {
-		lightCyan: '#cbfafa',
-		blueLagoon: '#046182',
-		charcoal: '#424242',
-		maire: '#2b2a24'
+		turbo: '#f5d110',
+		saddleBrown: '#8e440d',
+		sirocco: '#64746c',
+		sealBrown: '#120d07'
 	},
 	fonts: {
 		openSans: "'Open Sans', sans-serif"
