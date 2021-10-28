@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { createContext, useReducer } from 'react';
 
-const App = () => (
-	<div className='App'>
-		<h1>Hello from this app!</h1>
-	</div>
-);
+// components
+import Footer from './components/Footer';
+import MasterGenerator from './components/MasterGenerator';
+
+// reducer
+import {
+	GeneratorActions,
+	generatorReducer,
+	GeneratorState,
+	initialState
+} from './reducer/generatorReducer';
+
+interface AppContextInterface {
+	state: GeneratorState;
+	dispatch: React.Dispatch<GeneratorActions>;
+}
+
+const GeneratorContext = createContext<AppContextInterface | null>(null);
+
+const App = () => {
+	const [state, dispatch] = useReducer(generatorReducer, initialState);
+
+	return (
+		<div className='App'>
+			<GeneratorContext.Provider value={{ state, dispatch }}>
+				<MasterGenerator />
+				<Footer />
+			</GeneratorContext.Provider>
+		</div>
+	);
+};
 
 export default App;
