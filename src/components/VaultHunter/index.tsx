@@ -1,5 +1,9 @@
 import React, { useContext } from 'react';
 
+// styled components
+import { Button, InnerWrapper, ReminderText, SubHeading } from '../../styles/lib';
+import { TagList, Tag } from './styles';
+
 // context
 import GeneratorContext from '../../context/generatorContext';
 
@@ -20,17 +24,21 @@ const VaultHunter = () => {
 	return (
 		<>
 			{ctx?.state.currentPhase === PHASE_VAULT_HUNTER ? (
-				<div>
-					<h2>Select Your Vault Hunter</h2>
-					<p>One of the following vault hunters below will be chosen at random for you.</p>
+				<InnerWrapper>
+					<SubHeading>Select Your Vault Hunter</SubHeading>
 
-					<ul>
+					<ReminderText>
+						One of the following vault hunters below will be chosen at random for you.
+					</ReminderText>
+
+					<TagList>
 						{matchingVaultHunters.map(({ name }) => (
-							<li key={name}>{name}</li>
+							<Tag key={name}>{name}</Tag>
 						))}
-					</ul>
+					</TagList>
 
-					<button
+					<Button
+						mode='step'
 						onClick={() =>
 							ctx.dispatch({
 								type: 'SELECT_VAULT_HUNTER',
@@ -40,8 +48,8 @@ const VaultHunter = () => {
 						type='button'
 					>
 						Select Vault Hunter
-					</button>
-				</div>
+					</Button>
+				</InnerWrapper>
 			) : null}
 		</>
 	);

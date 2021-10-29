@@ -1,6 +1,6 @@
 // data
 import {
-	PHASE_DETERMINING_PLAYTHROUGH,
+	PHASE_DETERMINE_PLAYTHROUGH,
 	PHASE_GAME,
 	PHASE_RESULTS,
 	PHASE_RUN_TYPE,
@@ -54,7 +54,7 @@ export const generatorReducer = (
 		case 'SELECT_RUN_TYPE': {
 			return {
 				...state,
-				currentPhase: PHASE_DETERMINING_PLAYTHROUGH,
+				currentPhase: PHASE_DETERMINE_PLAYTHROUGH,
 				selectedRunType: action.payload
 			};
 		}

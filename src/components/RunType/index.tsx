@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// styled components
+import { Button, InnerWrapper, ReminderText, SubHeading } from '../../styles/lib';
+import { Card, CardBottom, CardCopy, CardHeading, CardIcon, CardList, CardTop } from './styles';
 
 // context
 import GeneratorContext from '../../context/generatorContext';
@@ -14,32 +17,37 @@ const RunType = () => {
 	return (
 		<>
 			{ctx?.state.currentPhase === PHASE_RUN_TYPE ? (
-				<div>
-					<h2>Select Your Run Type</h2>
-					<p>A modifier will be chosen at random based on your selection below.</p>
-					<ul className='form__card-list'>
-						{options.map(({ name, description, icon }) => (
-							<li key={name}>
-								<div>
-									<FontAwesomeIcon icon={icon} size='3x' className='form__card-icon' />
-									<h3>{name}</h3>
-								</div>
+				<InnerWrapper>
+					<SubHeading>Select Your Run Type</SubHeading>
+					<ReminderText>
+						A modifier will be chosen at random based on your selection below.
+					</ReminderText>
 
-								<div>
-									<p>
+					<CardList>
+						{options.map(({ name, description, icon }) => (
+							<Card key={name}>
+								<CardTop>
+									<CardIcon icon={icon} size='3x' />
+									<CardHeading>{name}</CardHeading>
+								</CardTop>
+
+								<CardBottom>
+									<CardCopy>
 										{name === 'Allegiance' ? 'An' : 'A'} {name} run {description}.
-									</p>
-									<button
-										type='button'
+									</CardCopy>
+
+									<Button
+										mode='step'
 										onClick={() => ctx.dispatch({ type: 'SELECT_RUN_TYPE', payload: name })}
+										type='button'
 									>
 										Select
-									</button>
-								</div>
-							</li>
+									</Button>
+								</CardBottom>
+							</Card>
 						))}
-					</ul>
-				</div>
+					</CardList>
+				</InnerWrapper>
 			) : null}
 		</>
 	);

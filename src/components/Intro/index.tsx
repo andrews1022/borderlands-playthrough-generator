@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
 // styled components
-import { MainHeading, Tagline } from './styles';
 import { Button, InnerWrapper } from '../../styles/lib';
+import { MainHeading, Tagline } from './styles';
 
 // context
 import GeneratorContext from '../../context/generatorContext';

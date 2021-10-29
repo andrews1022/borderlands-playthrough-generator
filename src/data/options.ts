@@ -12,7 +12,7 @@ export const options: MainOption[] = [
 	},
 	{
 		name: 'Allegiance',
-		description: 'is when you may only use items from a specific manufacturer',
+		description: 'is when you may only use items from one manufacturer',
 		icon: faIndustry
 	},
 	{

@@ -1,10 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 
+// styled components
+import { InnerWrapper, SubHeading } from '../../styles/lib';
+import Loader from './styles';
+
 // context
 import GeneratorContext from '../../context/generatorContext';
 
 // data
-import { PHASE_DETERMINING_PLAYTHROUGH } from '../../data/constants';
+import { PHASE_DETERMINE_PLAYTHROUGH } from '../../data/constants';
 import {
 	allegianceOptions,
 	miscellaneousOptions,
@@ -22,7 +26,7 @@ const DeterminePlaythrough = () => {
 	useEffect(() => {
 		// eslint-disable-next-line operator-linebreak
 		const timeId =
-			ctx?.state.currentPhase === 'determining-playthrough'
+			ctx?.state.currentPhase === PHASE_DETERMINE_PLAYTHROUGH
 				? setTimeout(() => {
 						ctx.dispatch({ type: 'SET_PHASE_TO_RESULTS' });
 				  }, 1000)
@@ -100,11 +104,11 @@ const DeterminePlaythrough = () => {
 
 	return (
 		<>
-			{ctx?.state.currentPhase === PHASE_DETERMINING_PLAYTHROUGH ? (
-				<div className='form__inner'>
-					<div className='form__loader' />
-					<h2 className='form__loader-text'>Choosing your playthrough settings...</h2>
-				</div>
+			{ctx?.state.currentPhase === PHASE_DETERMINE_PLAYTHROUGH ? (
+				<InnerWrapper>
+					<Loader />
+					<SubHeading>Choosing your playthrough settings...</SubHeading>
+				</InnerWrapper>
 			) : null}
 		</>
 	);

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 
 // styled components
-import { Button } from '../../styles/lib';
+import { Button, InnerWrapper, SubHeading } from '../../styles/lib';
+import ButtonRow from './styles';
 
 // context
 import GeneratorContext from '../../context/generatorContext';
@@ -16,9 +17,10 @@ const Game = () => {
 	return (
 		<>
 			{ctx?.state.currentPhase === PHASE_GAME ? (
-				<div>
-					<h2>Select Your Game</h2>
-					<ul>
+				<InnerWrapper>
+					<SubHeading>Select Your Game</SubHeading>
+
+					<ButtonRow>
 						{games.map((game) => (
 							<li key={game}>
 								<Button
@@ -30,8 +32,8 @@ const Game = () => {
 								</Button>
 							</li>
 						))}
-					</ul>
-				</div>
+					</ButtonRow>
+				</InnerWrapper>
 			) : null}
 		</>
 	);
