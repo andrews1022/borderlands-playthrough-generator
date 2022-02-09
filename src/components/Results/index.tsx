@@ -7,45 +7,46 @@ import { Result, ResultsWrapper } from './styles';
 // context
 import GeneratorContext from '../../context/generatorContext';
 
-// data
-import { PHASE_RESULTS } from '../../data/constants';
+// constants
+import { STEP_RESULTS } from '../../constants/constants';
 
 const Results = () => {
-	const ctx = useContext(GeneratorContext);
+	const generatorContext = useContext(GeneratorContext);
 
-	return (
-		<>
-			{ctx?.state.currentPhase === PHASE_RESULTS ? (
-				<InnerWrapper>
-					<SubHeading>Here are the results!</SubHeading>
+	return generatorContext.generatorState.currentStep === STEP_RESULTS ? (
+		<InnerWrapper>
+			<SubHeading>Here are the results!</SubHeading>
 
-					<ResultsWrapper>
-						<Copy>
-							For your next playthrough of <Result>{ctx.state.selectedGame}</Result>, you&apos;ll
-							play as <Result>{ctx.state.selectedVaultHunter}</Result> with{' '}
-							<Result>
-								{ctx.state.modifierDescription
-									? `the ${ctx.state.selectedModifier} modifier`
-									: `${ctx.state.selectedModifier}`}
-							</Result>
-							!
-						</Copy>
+			<ResultsWrapper>
+				<Copy>
+					For your next playthrough of{' '}
+					<Result>{generatorContext.generatorState.selectedGame}</Result>, you&apos;ll play as{' '}
+					<Result>{generatorContext.generatorState.selectedVaultHunter}</Result> with{' '}
+					<Result>
+						{generatorContext.generatorState.modifierDescription
+							? `the ${generatorContext.generatorState.selectedModifier} modifier`
+							: `${generatorContext.generatorState.selectedModifier}`}
+					</Result>
+					!
+				</Copy>
 
-						{ctx.state.modifierDescription ? (
-							<Copy>
-								The <Result>{ctx.state.selectedModifier}</Result> modifier is when you{' '}
-								{ctx.state.modifierDescription}.
-							</Copy>
-						) : null}
-					</ResultsWrapper>
+				{generatorContext.generatorState.modifierDescription ? (
+					<Copy>
+						The <Result>{generatorContext.generatorState.selectedModifier}</Result> modifier is when
+						you {generatorContext.generatorState.modifierDescription}.
+					</Copy>
+				) : null}
+			</ResultsWrapper>
 
-					<Button mode='boundary' onClick={() => ctx.dispatch({ type: 'RESTART' })} type='button'>
-						Start Over?
-					</Button>
-				</InnerWrapper>
-			) : null}
-		</>
-	);
+			<Button
+				mode='boundary'
+				onClick={() => generatorContext.generatorDispatch({ type: 'RESTART' })}
+				type='button'
+			>
+				Start Over?
+			</Button>
+		</InnerWrapper>
+	) : null;
 };
 
 export default Results;

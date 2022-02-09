@@ -1,42 +1,42 @@
 import React, { useContext } from 'react';
 
+// context
+import GeneratorContext from '../../context/generatorContext';
+
 // styled components
 import { Button, InnerWrapper, SubHeading } from '../../styles/lib';
 import ButtonRow from './styles';
 
-// context
-import GeneratorContext from '../../context/generatorContext';
-
 // data
-import { PHASE_GAME } from '../../data/constants';
 import games from '../../data/games';
 
+// constants
+import { STEP_GAME } from '../../constants/constants';
+
 const Game = () => {
-	const ctx = useContext(GeneratorContext);
+	const generatorContext = useContext(GeneratorContext);
 
-	return (
-		<>
-			{ctx?.state.currentPhase === PHASE_GAME ? (
-				<InnerWrapper>
-					<SubHeading>Select Your Game</SubHeading>
+	return generatorContext.generatorState.currentStep === STEP_GAME ? (
+		<InnerWrapper>
+			<SubHeading>Select Your Game</SubHeading>
 
-					<ButtonRow>
-						{games.map((game) => (
-							<li key={game}>
-								<Button
-									mode='step'
-									onClick={() => ctx.dispatch({ type: 'SELECT_GAME', payload: game })}
-									type='button'
-								>
-									{game}
-								</Button>
-							</li>
-						))}
-					</ButtonRow>
-				</InnerWrapper>
-			) : null}
-		</>
-	);
+			<ButtonRow>
+				{games.map((game) => (
+					<li key={game}>
+						<Button
+							mode='step'
+							onClick={() =>
+								generatorContext.generatorDispatch({ type: 'SELECT_GAME', payload: game })
+							}
+							type='button'
+						>
+							{game}
+						</Button>
+					</li>
+				))}
+			</ButtonRow>
+		</InnerWrapper>
+	) : null;
 };
 
 export default Game;

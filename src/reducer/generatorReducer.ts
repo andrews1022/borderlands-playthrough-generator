@@ -1,14 +1,15 @@
-// data
+// step constants
 import {
-	PHASE_DETERMINE_PLAYTHROUGH,
-	PHASE_GAME,
-	PHASE_RESULTS,
-	PHASE_RUN_TYPE,
-	PHASE_VAULT_HUNTER
-} from '../data/constants';
+	STEP_DETERMINE_PLAYTHROUGH,
+	STEP_GAME,
+	STEP_INTRO,
+	STEP_RESULTS,
+	STEP_RUN_TYPE,
+	STEP_VAULT_HUNTER
+} from '../constants/constants';
 
 export interface GeneratorState {
-	currentPhase: string;
+	currentStep: string;
 	modifierDescription: string | null;
 	selectedGame: string;
 	selectedModifier: string;
@@ -16,8 +17,17 @@ export interface GeneratorState {
 	selectedVaultHunter: string;
 }
 
-export const initialState: GeneratorState = {
-	currentPhase: 'intro',
+export type GeneratorActions =
+	| { type: 'RESTART' }
+	| { type: 'SELECT_GAME'; payload: string }
+	| { type: 'SELECT_RUN_TYPE'; payload: string }
+	| { type: 'SELECT_VAULT_HUNTER'; payload: string }
+	| { type: 'SET_MODIFIER'; payload: { name: string; description: string | null } }
+	| { type: 'SET_STEP_TO_GAME' }
+	| { type: 'SET_STEP_TO_RESULTS' };
+
+export const initialGeneratorState: GeneratorState = {
+	currentStep: STEP_INTRO,
 	modifierDescription: '',
 	selectedGame: '',
 	selectedModifier: '',
@@ -25,28 +35,19 @@ export const initialState: GeneratorState = {
 	selectedVaultHunter: ''
 };
 
-export type GeneratorActions =
-	| { type: 'RESTART' }
-	| { type: 'SELECT_GAME'; payload: string }
-	| { type: 'SELECT_RUN_TYPE'; payload: string }
-	| { type: 'SELECT_VAULT_HUNTER'; payload: string }
-	| { type: 'SET_MODIFIER'; payload: { name: string; description: string | null } }
-	| { type: 'SET_PHASE_TO_GAME' }
-	| { type: 'SET_PHASE_TO_RESULTS' };
-
 export const generatorReducer = (
-	state: GeneratorState,
+	state: GeneratorState = initialGeneratorState,
 	action: GeneratorActions
 ): GeneratorState => {
 	switch (action.type) {
 		case 'RESTART': {
-			return initialState;
+			return initialGeneratorState;
 		}
 
 		case 'SELECT_GAME': {
 			return {
 				...state,
-				currentPhase: PHASE_VAULT_HUNTER,
+				currentStep: STEP_VAULT_HUNTER,
 				selectedGame: action.payload
 			};
 		}
@@ -54,7 +55,7 @@ export const generatorReducer = (
 		case 'SELECT_RUN_TYPE': {
 			return {
 				...state,
-				currentPhase: PHASE_DETERMINE_PLAYTHROUGH,
+				currentStep: STEP_DETERMINE_PLAYTHROUGH,
 				selectedRunType: action.payload
 			};
 		}
@@ -62,7 +63,7 @@ export const generatorReducer = (
 		case 'SELECT_VAULT_HUNTER': {
 			return {
 				...state,
-				currentPhase: PHASE_RUN_TYPE,
+				currentStep: STEP_RUN_TYPE,
 				selectedVaultHunter: action.payload
 			};
 		}
@@ -75,17 +76,17 @@ export const generatorReducer = (
 			};
 		}
 
-		case 'SET_PHASE_TO_GAME': {
+		case 'SET_STEP_TO_GAME': {
 			return {
 				...state,
-				currentPhase: PHASE_GAME
+				currentStep: STEP_GAME
 			};
 		}
 
-		case 'SET_PHASE_TO_RESULTS': {
+		case 'SET_STEP_TO_RESULTS': {
 			return {
 				...state,
-				currentPhase: PHASE_RESULTS
+				currentStep: STEP_RESULTS
 			};
 		}
 

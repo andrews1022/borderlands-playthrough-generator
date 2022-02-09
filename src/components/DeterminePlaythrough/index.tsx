@@ -1,14 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 
+// context
+import GeneratorContext from '../../context/generatorContext';
+
 // styled components
 import { InnerWrapper, SubHeading } from '../../styles/lib';
 import Loader from './styles';
 
-// context
-import GeneratorContext from '../../context/generatorContext';
-
 // data
-import { PHASE_DETERMINE_PLAYTHROUGH } from '../../data/constants';
 import {
 	allegianceOptions,
 	miscellaneousOptions,
@@ -16,44 +15,47 @@ import {
 	superiorityOptions
 } from '../../data/options';
 
+// constants
+import { STEP_DETERMINE_PLAYTHROUGH } from '../../constants/constants';
+
 // utils
 import getRandomArrayIndex from '../../utils/getRandomArrayIndex';
 
 const DeterminePlaythrough = () => {
-	const ctx = useContext(GeneratorContext);
+	const generatorContext = useContext(GeneratorContext);
 
 	// show this component only for a limited amount of time
 	useEffect(() => {
 		// eslint-disable-next-line operator-linebreak
-		const timeId =
-			ctx?.state.currentPhase === PHASE_DETERMINE_PLAYTHROUGH
+		const timer =
+			generatorContext.generatorState.currentStep === STEP_DETERMINE_PLAYTHROUGH
 				? setTimeout(() => {
-						ctx.dispatch({ type: 'SET_PHASE_TO_RESULTS' });
+						generatorContext.generatorDispatch({ type: 'SET_STEP_TO_RESULTS' });
 				  }, 1000)
 				: null;
 
 		return () => {
-			clearTimeout(timeId!);
+			clearTimeout(timer!);
 		};
-	}, [ctx?.dispatch, ctx?.state.currentPhase]);
+	}, [generatorContext.generatorState.currentStep]);
 
 	useEffect(() => {
 		const determineModifier = () => {
-			const selectedRunType = ctx?.state.selectedRunType;
+			const { selectedRunType } = generatorContext.generatorState;
 
 			const matchingAllegiances = allegianceOptions.filter(
-				(allegiance) => allegiance.game === ctx?.state.selectedGame
+				(allegiance) => allegiance.game === generatorContext.generatorState.selectedGame
 			);
 
 			const matchingRarities = rarityOptions.filter(
-				(rarity) => rarity.game === ctx?.state.selectedGame
+				(rarity) => rarity.game === generatorContext.generatorState.selectedGame
 			);
 
 			const matchingMiscObj = miscellaneousOptions[getRandomArrayIndex(miscellaneousOptions)];
 
 			switch (selectedRunType) {
 				case 'Superiority':
-					ctx?.dispatch({
+					generatorContext.generatorDispatch({
 						type: 'SET_MODIFIER',
 						payload: {
 							name: `${superiorityOptions[getRandomArrayIndex(superiorityOptions)]} superiority`,
@@ -63,7 +65,7 @@ const DeterminePlaythrough = () => {
 					break;
 
 				case 'Allegiance':
-					ctx?.dispatch({
+					generatorContext.generatorDispatch({
 						type: 'SET_MODIFIER',
 						payload: {
 							name: `${
@@ -75,7 +77,7 @@ const DeterminePlaythrough = () => {
 					break;
 
 				case 'Rarity':
-					ctx?.dispatch({
+					generatorContext.generatorDispatch({
 						type: 'SET_MODIFIER',
 						payload: {
 							name: `${matchingRarities[getRandomArrayIndex(matchingRarities)].rarity} items only`,
@@ -85,7 +87,7 @@ const DeterminePlaythrough = () => {
 					break;
 
 				case 'Miscellaneous':
-					ctx?.dispatch({
+					generatorContext.generatorDispatch({
 						type: 'SET_MODIFIER',
 						payload: {
 							name: `${matchingMiscObj.name}`,
@@ -100,18 +102,14 @@ const DeterminePlaythrough = () => {
 		};
 
 		determineModifier();
-	}, [ctx?.dispatch, ctx?.state.currentPhase]);
+	}, [generatorContext.generatorState.currentStep]);
 
-	return (
-		<>
-			{ctx?.state.currentPhase === PHASE_DETERMINE_PLAYTHROUGH ? (
-				<InnerWrapper>
-					<Loader />
-					<SubHeading>Choosing your playthrough settings...</SubHeading>
-				</InnerWrapper>
-			) : null}
-		</>
-	);
+	return generatorContext.generatorState.currentStep === STEP_DETERMINE_PLAYTHROUGH ? (
+		<InnerWrapper>
+			<Loader />
+			<SubHeading>Choosing your playthrough settings...</SubHeading>
+		</InnerWrapper>
+	) : null;
 };
 
 export default DeterminePlaythrough;

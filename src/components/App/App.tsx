@@ -5,24 +5,22 @@ import Footer from '../Footer';
 import MasterGenerator from '../MasterGenerator';
 
 // styled components
-import AppWrapper from './styles';
+import * as S from './styles';
 
 // context
 import GeneratorContext from '../../context/generatorContext';
-
-// reducer
-import { generatorReducer, initialState } from '../../reducer/generatorReducer';
+import { generatorReducer, initialGeneratorState } from '../../reducer/generatorReducer';
 
 const App = () => {
-	const [state, dispatch] = useReducer(generatorReducer, initialState);
+	const [state, dispatch] = useReducer(generatorReducer, initialGeneratorState);
 
 	return (
-		<AppWrapper>
-			<GeneratorContext.Provider value={{ state, dispatch }}>
+		<S.Wrapper>
+			<GeneratorContext.Provider value={{ generatorState: state, generatorDispatch: dispatch }}>
 				<MasterGenerator />
 				<Footer />
 			</GeneratorContext.Provider>
-		</AppWrapper>
+		</S.Wrapper>
 	);
 };
 
