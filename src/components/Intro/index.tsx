@@ -4,8 +4,9 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { Button, InnerWrapper } from '../../styles/lib';
 import { MainHeading, Tagline } from './styles';
+import { Button } from '../UI/Button';
+import { InnerWrapper } from '../UI/InnerWrapper';
 
 // constants
 import { STEP_INTRO } from '../../constants/constants';
@@ -24,7 +25,7 @@ const Intro = () => {
 			</Tagline>
 
 			<Button
-				mode='boundary'
+				mode='primary'
 				onClick={() => generatorContext.generatorDispatch({ type: 'SET_STEP_TO_GAME' })}
 				type='button'
 			>

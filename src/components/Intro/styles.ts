@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Copy } from '../../styles/lib';
+import { Copy } from '../UI/Copy';
 
 export const MainHeading = styled.h1`
 	font-size: 5.5rem;

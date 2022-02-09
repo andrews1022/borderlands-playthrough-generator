@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 
 // styled components
-import { Button, Copy, InnerWrapper, SubHeading } from '../../styles/lib';
+import { SubHeading } from '../../styles/lib';
 import { Result, ResultsWrapper } from './styles';
+import { Button } from '../UI/Button';
+import { Copy } from '../UI/Copy';
+import { InnerWrapper } from '../UI/InnerWrapper';
 
 // context
 import GeneratorContext from '../../context/generatorContext';
@@ -39,7 +42,7 @@ const Results = () => {
 			</ResultsWrapper>
 
 			<Button
-				mode='boundary'
+				mode='primary'
 				onClick={() => generatorContext.generatorDispatch({ type: 'RESTART' })}
 				type='button'
 			>

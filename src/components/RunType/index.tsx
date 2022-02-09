@@ -4,8 +4,11 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { Button, InnerWrapper, ReminderText, SubHeading } from '../../styles/lib';
+import { SubHeading } from '../../styles/lib';
 import { Card, CardBottom, CardCopy, CardHeading, CardIcon, CardList, CardTop } from './styles';
+import { Button } from '../UI/Button';
+import { InnerWrapper } from '../UI/InnerWrapper';
+import { ReminderText } from '../UI/ReminderText';
 
 // data
 import { options } from '../../data/options';
@@ -37,7 +40,7 @@ const RunType = () => {
 							</CardCopy>
 
 							<Button
-								mode='step'
+								mode='secondary'
 								onClick={() =>
 									generatorContext.generatorDispatch({ type: 'SELECT_RUN_TYPE', payload: name })
 								}

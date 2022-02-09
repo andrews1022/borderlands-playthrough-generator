@@ -4,8 +4,11 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { Button, InnerWrapper, ReminderText, SubHeading } from '../../styles/lib';
+import { SubHeading } from '../../styles/lib';
 import { TagList, Tag } from './styles';
+import { Button } from '../UI/Button';
+import { InnerWrapper } from '../UI/InnerWrapper';
+import { ReminderText } from '../UI/ReminderText';
 
 // data
 import vaultHunters from '../../data/vaultHunters';
@@ -14,7 +17,7 @@ import vaultHunters from '../../data/vaultHunters';
 import { STEP_VAULT_HUNTER } from '../../constants/constants';
 
 // utils
-import getRandomArrayIndex from '../../utils/getRandomArrayIndex';
+import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
 
 const VaultHunter = () => {
 	const generatorContext = useContext(GeneratorContext);
@@ -38,7 +41,7 @@ const VaultHunter = () => {
 			</TagList>
 
 			<Button
-				mode='step'
+				mode='secondary'
 				onClick={() =>
 					generatorContext.generatorDispatch({
 						type: 'SELECT_VAULT_HUNTER',

@@ -1,5 +1,8 @@
 // types
-import { VaultHunter } from '../types/types';
+type VaultHunter = {
+	name: string;
+	game: string;
+};
 
 const vaultHunters: VaultHunter[] = [
 	// Borderlands 1

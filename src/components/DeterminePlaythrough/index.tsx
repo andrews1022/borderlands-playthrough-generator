@@ -4,8 +4,9 @@ import React, { useContext, useEffect } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { InnerWrapper, SubHeading } from '../../styles/lib';
+import { SubHeading } from '../../styles/lib';
 import Loader from './styles';
+import { InnerWrapper } from '../UI/InnerWrapper';
 
 // data
 import {
@@ -19,7 +20,7 @@ import {
 import { STEP_DETERMINE_PLAYTHROUGH } from '../../constants/constants';
 
 // utils
-import getRandomArrayIndex from '../../utils/getRandomArrayIndex';
+import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
 
 const DeterminePlaythrough = () => {
 	const generatorContext = useContext(GeneratorContext);

@@ -1,8 +1,33 @@
 // font awesome
-import { faFistRaised, faIndustry, faStar, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import {
+	faFistRaised,
+	faIndustry,
+	faStar,
+	faGamepad,
+	IconDefinition
+} from '@fortawesome/free-solid-svg-icons';
 
 // types
-import { AllegianceOption, MainOption, MiscellaneousOption, RarityOption } from '../types/types';
+type AllegianceOption = {
+	name: string;
+	game: string;
+};
+
+type MainOption = {
+	name: string;
+	description: string;
+	icon: IconDefinition;
+};
+
+type MiscellaneousOption = {
+	name: string;
+	description: string;
+};
+
+type RarityOption = {
+	rarity: string;
+	game: string;
+};
 
 export const options: MainOption[] = [
 	{

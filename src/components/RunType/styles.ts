@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // styled components
-import { Copy } from '../../styles/lib';
+import { Copy } from '../UI/Copy';
 
 export const CardList = styled.ul`
 	display: flex;

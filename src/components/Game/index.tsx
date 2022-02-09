@@ -4,8 +4,10 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { Button, InnerWrapper, SubHeading } from '../../styles/lib';
+import { SubHeading } from '../../styles/lib';
 import ButtonRow from './styles';
+import { Button } from '../UI/Button';
+import { InnerWrapper } from '../UI/InnerWrapper';
 
 // data
 import games from '../../data/games';
@@ -24,7 +26,7 @@ const Game = () => {
 				{games.map((game) => (
 					<li key={game}>
 						<Button
-							mode='step'
+							mode='secondary'
 							onClick={() =>
 								generatorContext.generatorDispatch({ type: 'SELECT_GAME', payload: game })
 							}
