@@ -4,7 +4,6 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { SubHeading } from '../../styles/lib';
 import ButtonRow from './styles';
 import { Button } from '../UI/Button';
 import { InnerWrapper } from '../UI/InnerWrapper';
@@ -13,25 +12,30 @@ import { InnerWrapper } from '../UI/InnerWrapper';
 import games from '../../data/games';
 
 // constants
-import { STEP_GAME } from '../../constants/constants';
+import { STEP_GAME } from '../../constants/steps';
+import { Heading } from '../UI/Heading';
 
 const Game = () => {
 	const generatorContext = useContext(GeneratorContext);
 
-	return generatorContext.generatorState.currentStep === STEP_GAME ? (
+	// destructure state fields for cleaner jsx
+	const { currentStep } = generatorContext.generatorState;
+
+	// event functions
+	const changeStepHandler = (game: string) => {
+		generatorContext.generatorDispatch({ type: 'SELECT_GAME', payload: game });
+	};
+
+	return currentStep === STEP_GAME ? (
 		<InnerWrapper>
-			<SubHeading>Select Your Game</SubHeading>
+			<Heading as='h2' size='medium'>
+				Select Your Game
+			</Heading>
 
 			<ButtonRow>
-				{games.map((game) => (
+				{games.map((game: string) => (
 					<li key={game}>
-						<Button
-							mode='secondary'
-							onClick={() =>
-								generatorContext.generatorDispatch({ type: 'SELECT_GAME', payload: game })
-							}
-							type='button'
-						>
+						<Button mode='secondary' onClick={() => changeStepHandler(game)} type='button'>
 							{game}
 						</Button>
 					</li>

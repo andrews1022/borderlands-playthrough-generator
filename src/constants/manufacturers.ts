@@ -1,0 +1,13 @@
+export const MANUFACTURER_ATLAS = 'Atlas';
+export const MANUFACTURER_BANDIT = 'Bandit';
+export const MANUFACTURER_COV = 'COV';
+export const MANUFACTURER_DAHL = 'Dahl';
+export const MANUFACTURER_ERIDIAN = 'Eridian';
+export const MANUFACTURER_HYPERION = 'Hyperion';
+export const MANUFACTURER_JAKOBS = 'Jakobs';
+export const MANUFACTURER_MALIWAN = 'Maliwan';
+export const MANUFACTURER_SS_MUNITIONS = 'S&S Munitions';
+export const MANUFACTURER_SCAV = 'Scav';
+export const MANUFACTURER_TEDIORE = 'Tediore';
+export const MANUFACTURER_TORGUE = 'Torgue';
+export const MANUFACTURER_VLADOF = 'Vladof';

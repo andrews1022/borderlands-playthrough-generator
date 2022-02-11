@@ -52,11 +52,6 @@ export const CardIcon = styled(FontAwesomeIcon)`
 	}
 `;
 
-export const CardHeading = styled.h3`
-	font-size: 1.5rem;
-	font-weight: 700;
-`;
-
 export const CardCopy = styled(Copy)`
 	margin-bottom: 7.5%;
 `;

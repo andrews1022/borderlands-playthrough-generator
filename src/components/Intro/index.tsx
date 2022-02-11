@@ -4,31 +4,38 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { MainHeading, Tagline } from './styles';
+import * as S from './styles';
 import { Button } from '../UI/Button';
+import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 
 // constants
-import { STEP_INTRO } from '../../constants/constants';
+import { STEP_INTRO } from '../../constants/steps';
 
 const Intro = () => {
 	const generatorContext = useContext(GeneratorContext);
 
-	return generatorContext.generatorState.currentStep === STEP_INTRO ? (
-		<InnerWrapper>
-			<MainHeading>Borderlands Playthrough Generator</MainHeading>
+	// destructure state fields for cleaner jsx
+	const { currentStep } = generatorContext.generatorState;
 
-			<Tagline>
+	// event functions
+	const changeStepHandler = () => {
+		generatorContext.generatorDispatch({ type: 'SET_STEP_TO_GAME' });
+	};
+
+	return currentStep === STEP_INTRO ? (
+		<InnerWrapper>
+			<Heading as='h1' size='large'>
+				Borderlands Playthrough Generator
+			</Heading>
+
+			<S.Tagline>
 				Looking for a fun and exciting new way to play through your favourite Borderlands game?{' '}
 				<br />
 				Use this app to generate it for you!
-			</Tagline>
+			</S.Tagline>
 
-			<Button
-				mode='primary'
-				onClick={() => generatorContext.generatorDispatch({ type: 'SET_STEP_TO_GAME' })}
-				type='button'
-			>
+			<Button mode='primary' onClick={changeStepHandler} type='button'>
 				Get Started
 			</Button>
 		</InnerWrapper>

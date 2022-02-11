@@ -7,13 +7,50 @@ import {
 	IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 
+// constants
+import {
+	GAME_BORDERLANDS_1,
+	GAME_BORDERLANDS_2,
+	GAME_BORDERLANDS_3,
+	GAME_BORDERLANDS_TPS
+} from '../constants/games';
+
+import {
+	MANUFACTURER_ATLAS,
+	MANUFACTURER_BANDIT,
+	MANUFACTURER_COV,
+	MANUFACTURER_DAHL,
+	MANUFACTURER_ERIDIAN,
+	MANUFACTURER_HYPERION,
+	MANUFACTURER_JAKOBS,
+	MANUFACTURER_MALIWAN,
+	MANUFACTURER_SCAV,
+	MANUFACTURER_SS_MUNITIONS,
+	MANUFACTURER_TEDIORE,
+	MANUFACTURER_TORGUE,
+	MANUFACTURER_VLADOF
+} from '../constants/manufacturers';
+
+import {
+	RARITY_COMMON,
+	RARITY_EFFERVESCENT,
+	RARITY_EPIC,
+	RARITY_ETECH,
+	RARITY_GLITCH,
+	RARITY_LEGENDARY,
+	RARITY_PEARLESCENT,
+	RARITY_RARE,
+	RARITY_SERAPH,
+	RARITY_UNCOMMON
+} from '../constants/rarities';
+
 // types
 type AllegianceOption = {
-	name: string;
+	manufacturer: string;
 	game: string;
 };
 
-type MainOption = {
+export type MainOption = {
 	name: string;
 	description: string;
 	icon: IconDefinition;
@@ -65,83 +102,83 @@ export const superiorityOptions = [
 
 export const allegianceOptions: AllegianceOption[] = [
 	// Borderlands 1
-	{ name: 'Atlas', game: 'Borderlands' },
-	{ name: 'Dahl', game: 'Borderlands' },
-	{ name: 'Eridian', game: 'Borderlands' },
-	{ name: 'Hyperion', game: 'Borderlands' },
-	{ name: 'Jakobs', game: 'Borderlands' },
-	{ name: 'Maliwan', game: 'Borderlands' },
-	{ name: 'S&S Munitions', game: 'Borderlands' },
-	{ name: 'Tediore', game: 'Borderlands' },
-	{ name: 'Torgue', game: 'Borderlands' },
-	{ name: 'Vladof', game: 'Borderlands' },
+	{ manufacturer: MANUFACTURER_ATLAS, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_DAHL, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_ERIDIAN, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_HYPERION, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_JAKOBS, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_MALIWAN, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_SS_MUNITIONS, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_TEDIORE, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_TORGUE, game: GAME_BORDERLANDS_1 },
+	{ manufacturer: MANUFACTURER_VLADOF, game: GAME_BORDERLANDS_1 },
 
 	// Borderlands: The Pre-Sequel
-	{ name: 'Dahl', game: 'Borderlands: The Pre-Sequel' },
-	{ name: 'Hyperion', game: 'Borderlands: The Pre-Sequel' },
-	{ name: 'Jakobs', game: 'Borderlands: The Pre-Sequel' },
-	{ name: 'Maliwan', game: 'Borderlands: The Pre-Sequel' },
-	{ name: 'Scav', game: 'Borderlands: The Pre-Sequel' },
-	{ name: 'Tediore', game: 'Borderlands: The Pre-Sequel' },
-	{ name: 'Torgue', game: 'Borderlands: The Pre-Sequel' },
-	{ name: 'Vladof', game: 'Borderlands: The Pre-Sequel' },
+	{ manufacturer: MANUFACTURER_DAHL, game: GAME_BORDERLANDS_TPS },
+	{ manufacturer: MANUFACTURER_HYPERION, game: GAME_BORDERLANDS_TPS },
+	{ manufacturer: MANUFACTURER_JAKOBS, game: GAME_BORDERLANDS_TPS },
+	{ manufacturer: MANUFACTURER_MALIWAN, game: GAME_BORDERLANDS_TPS },
+	{ manufacturer: MANUFACTURER_SCAV, game: GAME_BORDERLANDS_TPS },
+	{ manufacturer: MANUFACTURER_TEDIORE, game: GAME_BORDERLANDS_TPS },
+	{ manufacturer: MANUFACTURER_TORGUE, game: GAME_BORDERLANDS_TPS },
+	{ manufacturer: MANUFACTURER_VLADOF, game: GAME_BORDERLANDS_TPS },
 
 	// Borderlands 2
-	{ name: 'Bandit', game: 'Borderlands 2' },
-	{ name: 'Dahl', game: 'Borderlands 2' },
-	{ name: 'Hyperion', game: 'Borderlands 2' },
-	{ name: 'Jakobs', game: 'Borderlands 2' },
-	{ name: 'Maliwan', game: 'Borderlands 2' },
-	{ name: 'Tediore', game: 'Borderlands 2' },
-	{ name: 'Torgue', game: 'Borderlands 2' },
-	{ name: 'Vladof', game: 'Borderlands 2' },
+	{ manufacturer: MANUFACTURER_BANDIT, game: GAME_BORDERLANDS_2 },
+	{ manufacturer: MANUFACTURER_DAHL, game: GAME_BORDERLANDS_2 },
+	{ manufacturer: MANUFACTURER_HYPERION, game: GAME_BORDERLANDS_2 },
+	{ manufacturer: MANUFACTURER_JAKOBS, game: GAME_BORDERLANDS_2 },
+	{ manufacturer: MANUFACTURER_MALIWAN, game: GAME_BORDERLANDS_2 },
+	{ manufacturer: MANUFACTURER_TEDIORE, game: GAME_BORDERLANDS_2 },
+	{ manufacturer: MANUFACTURER_TORGUE, game: GAME_BORDERLANDS_2 },
+	{ manufacturer: MANUFACTURER_VLADOF, game: GAME_BORDERLANDS_2 },
 
 	// Borderlands 3
-	{ name: 'Atlas', game: 'Borderlands 3' },
-	{ name: 'COV', game: 'Borderlands 3' },
-	{ name: 'Dahl', game: 'Borderlands 3' },
-	{ name: 'Hyperion', game: 'Borderlands 3' },
-	{ name: 'Jakobs', game: 'Borderlands 3' },
-	{ name: 'Maliwan', game: 'Borderlands 3' },
-	{ name: 'Tediore', game: 'Borderlands 3' },
-	{ name: 'Torgue', game: 'Borderlands 3' },
-	{ name: 'Vladof', game: 'Borderlands 3' }
+	{ manufacturer: MANUFACTURER_ATLAS, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_COV, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_DAHL, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_HYPERION, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_JAKOBS, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_MALIWAN, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_TEDIORE, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_TORGUE, game: GAME_BORDERLANDS_3 },
+	{ manufacturer: MANUFACTURER_VLADOF, game: GAME_BORDERLANDS_3 }
 ];
 
 export const rarityOptions: RarityOption[] = [
 	// Borderlands 1
-	{ rarity: 'Common', game: 'Borderlands' },
-	{ rarity: 'Uncommon', game: 'Borderlands' },
-	{ rarity: 'Rare', game: 'Borderlands' },
-	{ rarity: 'Epic', game: 'Borderlands' },
-	{ rarity: 'Legendary', game: 'Borderlands' },
-	{ rarity: 'Pearlescent', game: 'Borderlands' },
+	{ rarity: RARITY_COMMON, game: GAME_BORDERLANDS_1 },
+	{ rarity: RARITY_UNCOMMON, game: GAME_BORDERLANDS_1 },
+	{ rarity: RARITY_RARE, game: GAME_BORDERLANDS_1 },
+	{ rarity: RARITY_EPIC, game: GAME_BORDERLANDS_1 },
+	{ rarity: RARITY_LEGENDARY, game: GAME_BORDERLANDS_1 },
+	{ rarity: RARITY_PEARLESCENT, game: GAME_BORDERLANDS_1 },
 
 	// Borderlands: The Pre-Sequel
-	{ rarity: 'Common', game: 'Borderlands' },
-	{ rarity: 'Uncommon', game: 'Borderlands' },
-	{ rarity: 'Rare', game: 'Borderlands' },
-	{ rarity: 'Epic', game: 'Borderlands' },
-	{ rarity: 'Glitch', game: 'Borderlands' },
-	{ rarity: 'Legendary', game: 'Borderlands' },
+	{ rarity: RARITY_COMMON, game: GAME_BORDERLANDS_TPS },
+	{ rarity: RARITY_UNCOMMON, game: GAME_BORDERLANDS_TPS },
+	{ rarity: RARITY_RARE, game: GAME_BORDERLANDS_TPS },
+	{ rarity: RARITY_EPIC, game: GAME_BORDERLANDS_TPS },
+	{ rarity: RARITY_GLITCH, game: GAME_BORDERLANDS_TPS },
+	{ rarity: RARITY_LEGENDARY, game: GAME_BORDERLANDS_TPS },
 
 	// Borderlands 2
-	{ rarity: 'Common', game: 'Borderlands 2' },
-	{ rarity: 'Uncommon', game: 'Borderlands 2' },
-	{ rarity: 'Rare', game: 'Borderlands 2' },
-	{ rarity: 'Epic', game: 'Borderlands 2' },
-	{ rarity: 'Legendary', game: 'Borderlands 2' },
-	{ rarity: 'E-Tech', game: 'Borderlands 2' },
-	{ rarity: 'Seraph', game: 'Borderlands 2' },
-	{ rarity: 'Pearlescent', game: 'Borderlands 2' },
-	{ rarity: 'Effervescent', game: 'Borderlands 2' },
+	{ rarity: RARITY_COMMON, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_UNCOMMON, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_RARE, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_EPIC, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_LEGENDARY, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_ETECH, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_SERAPH, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_PEARLESCENT, game: GAME_BORDERLANDS_2 },
+	{ rarity: RARITY_EFFERVESCENT, game: GAME_BORDERLANDS_2 },
 
 	// Borderlands 3
-	{ rarity: 'Common', game: 'Borderlands 3' },
-	{ rarity: 'Uncommon', game: 'Borderlands 3' },
-	{ rarity: 'Rare', game: 'Borderlands 3' },
-	{ rarity: 'Epic', game: 'Borderlands 3' },
-	{ rarity: 'Legendary', game: 'Borderlands 3' }
+	{ rarity: RARITY_COMMON, game: GAME_BORDERLANDS_3 },
+	{ rarity: RARITY_UNCOMMON, game: GAME_BORDERLANDS_3 },
+	{ rarity: RARITY_RARE, game: GAME_BORDERLANDS_3 },
+	{ rarity: RARITY_EPIC, game: GAME_BORDERLANDS_3 },
+	{ rarity: RARITY_LEGENDARY, game: GAME_BORDERLANDS_3 }
 ];
 
 export const miscellaneousOptions: MiscellaneousOption[] = [

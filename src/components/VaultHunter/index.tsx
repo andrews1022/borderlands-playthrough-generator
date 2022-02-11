@@ -4,9 +4,9 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { SubHeading } from '../../styles/lib';
 import { TagList, Tag } from './styles';
 import { Button } from '../UI/Button';
+import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 import { ReminderText } from '../UI/ReminderText';
 
@@ -14,7 +14,7 @@ import { ReminderText } from '../UI/ReminderText';
 import vaultHunters from '../../data/vaultHunters';
 
 // constants
-import { STEP_VAULT_HUNTER } from '../../constants/constants';
+import { STEP_VAULT_HUNTER } from '../../constants/steps';
 
 // utils
 import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
@@ -22,34 +22,37 @@ import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
 const VaultHunter = () => {
 	const generatorContext = useContext(GeneratorContext);
 
-	const matchingVaultHunters = vaultHunters.filter(
-		(hunter) => hunter.game === generatorContext.generatorState.selectedGame
-	);
+	// destructure state fields for cleaner jsx
+	const { currentStep, selectedGame } = generatorContext.generatorState;
 
-	return generatorContext.generatorState.currentStep === STEP_VAULT_HUNTER ? (
+	// reusable var
+	const matchingVaultHunters = vaultHunters.filter((hunter) => hunter.game === selectedGame);
+
+	// event functions
+	const changeStepHandler = () => {
+		generatorContext.generatorDispatch({
+			type: 'SELECT_VAULT_HUNTER',
+			payload: matchingVaultHunters[getRandomArrayIndex(matchingVaultHunters)].name
+		});
+	};
+
+	return currentStep === STEP_VAULT_HUNTER ? (
 		<InnerWrapper>
-			<SubHeading>Select Your Vault Hunter</SubHeading>
+			<Heading as='h2' size='medium'>
+				Select Your Vault Hunter
+			</Heading>
 
 			<ReminderText>
 				One of the following vault hunters below will be chosen at random for you.
 			</ReminderText>
 
 			<TagList>
-				{matchingVaultHunters.map(({ name }) => (
-					<Tag key={name}>{name}</Tag>
+				{matchingVaultHunters.map((vaultHunter) => (
+					<Tag key={vaultHunter.name}>{vaultHunter.name}</Tag>
 				))}
 			</TagList>
 
-			<Button
-				mode='secondary'
-				onClick={() =>
-					generatorContext.generatorDispatch({
-						type: 'SELECT_VAULT_HUNTER',
-						payload: matchingVaultHunters[getRandomArrayIndex(matchingVaultHunters)].name
-					})
-				}
-				type='button'
-			>
+			<Button mode='secondary' onClick={changeStepHandler} type='button'>
 				Select Vault Hunter
 			</Button>
 		</InnerWrapper>

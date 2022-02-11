@@ -1,22 +1,21 @@
 import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
 
+// destructured theme properties
+const { fonts, mediaQueries } = theme;
+
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 100%;
 
-    @media ${theme.mediaQueries.desktopSmall} {
+    @media ${mediaQueries.desktopSmall} {
 		  font-size: 87.5%;
-    }
-
-    @media ${theme.mediaQueries.tabletLandscape} {
-      font-size: 75%;
     }
   }
 
   body {
-	  font-family: ${theme.fonts.openSans};
+	  font-family: ${fonts.openSans};
     line-height: 1;
   }
 
@@ -34,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   button, 
   input, 
   textarea {
-    font-family: ${theme.fonts.openSans};
+    font-family: ${fonts.openSans};
   }
 
   img,
@@ -43,10 +42,6 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     height: auto;
     max-width: 100%;
-  }
-
-  p {
-    line-height: 1.45;
   }
 
   a {

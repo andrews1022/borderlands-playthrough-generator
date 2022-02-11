@@ -4,8 +4,8 @@ import React, { useContext, useEffect } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { SubHeading } from '../../styles/lib';
 import Loader from './styles';
+import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 
 // data
@@ -17,7 +17,7 @@ import {
 } from '../../data/options';
 
 // constants
-import { STEP_DETERMINE_PLAYTHROUGH } from '../../constants/constants';
+import { STEP_DETERMINE_PLAYTHROUGH } from '../../constants/steps';
 
 // utils
 import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
@@ -25,11 +25,14 @@ import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
 const DeterminePlaythrough = () => {
 	const generatorContext = useContext(GeneratorContext);
 
+	// destructure state fields for cleaner jsx
+	const { currentStep, selectedGame, selectedRunType } = generatorContext.generatorState;
+
 	// show this component only for a limited amount of time
 	useEffect(() => {
 		// eslint-disable-next-line operator-linebreak
 		const timer =
-			generatorContext.generatorState.currentStep === STEP_DETERMINE_PLAYTHROUGH
+			currentStep === STEP_DETERMINE_PLAYTHROUGH
 				? setTimeout(() => {
 						generatorContext.generatorDispatch({ type: 'SET_STEP_TO_RESULTS' });
 				  }, 1000)
@@ -38,20 +41,13 @@ const DeterminePlaythrough = () => {
 		return () => {
 			clearTimeout(timer!);
 		};
-	}, [generatorContext.generatorState.currentStep]);
+	}, [currentStep]);
 
 	useEffect(() => {
 		const determineModifier = () => {
-			const { selectedRunType } = generatorContext.generatorState;
-
-			const matchingAllegiances = allegianceOptions.filter(
-				(allegiance) => allegiance.game === generatorContext.generatorState.selectedGame
-			);
-
-			const matchingRarities = rarityOptions.filter(
-				(rarity) => rarity.game === generatorContext.generatorState.selectedGame
-			);
-
+			// get matching data
+			const matchingAllegiances = allegianceOptions.filter((alg) => alg.game === selectedGame);
+			const matchingRarities = rarityOptions.filter((rar) => rar.game === selectedGame);
 			const matchingMiscObj = miscellaneousOptions[getRandomArrayIndex(miscellaneousOptions)];
 
 			switch (selectedRunType) {
@@ -70,7 +66,7 @@ const DeterminePlaythrough = () => {
 						type: 'SET_MODIFIER',
 						payload: {
 							name: `${
-								matchingAllegiances[getRandomArrayIndex(matchingAllegiances)].name
+								matchingAllegiances[getRandomArrayIndex(matchingAllegiances)].manufacturer
 							} items only`,
 							description: null
 						}
@@ -103,12 +99,15 @@ const DeterminePlaythrough = () => {
 		};
 
 		determineModifier();
-	}, [generatorContext.generatorState.currentStep]);
+	}, [currentStep]);
 
-	return generatorContext.generatorState.currentStep === STEP_DETERMINE_PLAYTHROUGH ? (
+	return currentStep === STEP_DETERMINE_PLAYTHROUGH ? (
 		<InnerWrapper>
 			<Loader />
-			<SubHeading>Choosing your playthrough settings...</SubHeading>
+
+			<Heading as='h2' size='medium'>
+				Choosing your playthrough settings...
+			</Heading>
 		</InnerWrapper>
 	) : null;
 };

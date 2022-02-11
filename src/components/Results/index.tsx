@@ -1,51 +1,55 @@
 import React, { useContext } from 'react';
 
 // styled components
-import { SubHeading } from '../../styles/lib';
 import { Result, ResultsWrapper } from './styles';
 import { Button } from '../UI/Button';
 import { Copy } from '../UI/Copy';
+import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 
 // context
 import GeneratorContext from '../../context/generatorContext';
 
 // constants
-import { STEP_RESULTS } from '../../constants/constants';
+import { STEP_RESULTS } from '../../constants/steps';
 
 const Results = () => {
 	const generatorContext = useContext(GeneratorContext);
 
-	return generatorContext.generatorState.currentStep === STEP_RESULTS ? (
+	// destructure state fields for cleaner jsx
+	// eslint-disable-next-line operator-linebreak
+	const { currentStep, modifierDescription, selectedGame, selectedModifier, selectedVaultHunter } =
+		generatorContext.generatorState;
+
+	// event functions
+	const changeStepHandler = () => {
+		generatorContext.generatorDispatch({ type: 'RESTART' });
+	};
+
+	return currentStep === STEP_RESULTS ? (
 		<InnerWrapper>
-			<SubHeading>Here are the results!</SubHeading>
+			<Heading as='h2' size='medium'>
+				Here are the results!
+			</Heading>
 
 			<ResultsWrapper>
 				<Copy>
-					For your next playthrough of{' '}
-					<Result>{generatorContext.generatorState.selectedGame}</Result>, you&apos;ll play as{' '}
-					<Result>{generatorContext.generatorState.selectedVaultHunter}</Result> with{' '}
+					For your next playthrough of <Result>{selectedGame}</Result>, you&apos;ll play as{' '}
+					<Result>{selectedVaultHunter}</Result> with{' '}
 					<Result>
-						{generatorContext.generatorState.modifierDescription
-							? `the ${generatorContext.generatorState.selectedModifier} modifier`
-							: `${generatorContext.generatorState.selectedModifier}`}
+						{modifierDescription ? `the ${selectedModifier} modifier` : `${selectedModifier}`}
 					</Result>
 					!
 				</Copy>
 
-				{generatorContext.generatorState.modifierDescription ? (
+				{modifierDescription ? (
 					<Copy>
-						The <Result>{generatorContext.generatorState.selectedModifier}</Result> modifier is when
-						you {generatorContext.generatorState.modifierDescription}.
+						The <Result>{selectedModifier}</Result> modifier is when you {modifierDescription}.
 					</Copy>
 				) : null}
 			</ResultsWrapper>
 
-			<Button
-				mode='primary'
-				onClick={() => generatorContext.generatorDispatch({ type: 'RESTART' })}
-				type='button'
-			>
+			<Button mode='primary' onClick={changeStepHandler} type='button'>
 				Start Over?
 			</Button>
 		</InnerWrapper>

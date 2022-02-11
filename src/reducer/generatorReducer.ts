@@ -6,7 +6,7 @@ import {
 	STEP_RESULTS,
 	STEP_RUN_TYPE,
 	STEP_VAULT_HUNTER
-} from '../constants/constants';
+} from '../constants/steps';
 
 export interface GeneratorState {
 	currentStep: string;

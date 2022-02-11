@@ -1,3 +1,10 @@
-const games = ['Borderlands', 'Borderlands: The Pre-Sequel', 'Borderlands 2', 'Borderlands 3'];
+import {
+	GAME_BORDERLANDS_1,
+	GAME_BORDERLANDS_TPS,
+	GAME_BORDERLANDS_2,
+	GAME_BORDERLANDS_3
+} from '../constants/games';
+
+const games = [GAME_BORDERLANDS_1, GAME_BORDERLANDS_TPS, GAME_BORDERLANDS_2, GAME_BORDERLANDS_3];
 
 export default games;
