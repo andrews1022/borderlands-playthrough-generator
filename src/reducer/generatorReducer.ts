@@ -8,14 +8,14 @@ import {
 	STEP_VAULT_HUNTER
 } from '../constants/steps';
 
-export interface GeneratorState {
+export type GeneratorState = {
 	currentStep: string;
 	modifierDescription: string | null;
 	selectedGame: string;
 	selectedModifier: string;
 	selectedRunType: string;
 	selectedVaultHunter: string;
-}
+};
 
 export type GeneratorActions =
 	| { type: 'RESTART' }
