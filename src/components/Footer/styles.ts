@@ -23,7 +23,6 @@ export const Copy = styled.p`
 `;
 
 export const IconLink = styled.a`
-	margin: 0 0.375%;
 	transition: all 175ms ease-in-out;
 
 	@media (hover) {

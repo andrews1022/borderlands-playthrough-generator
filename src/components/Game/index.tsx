@@ -4,8 +4,9 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import ButtonRow from './styles';
+import * as S from './styles';
 import { Button } from '../UI/Button';
+import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 
 // data
@@ -13,7 +14,6 @@ import games from '../../data/games';
 
 // constants
 import { STEP_GAME } from '../../constants/steps';
-import { Heading } from '../UI/Heading';
 
 const Game = () => {
 	const generatorContext = useContext(GeneratorContext);
@@ -32,15 +32,15 @@ const Game = () => {
 				Select Your Game
 			</Heading>
 
-			<ButtonRow>
-				{games.map((game: string) => (
+			<S.Row>
+				{games.map((game) => (
 					<li key={game}>
 						<Button mode='secondary' onClick={() => changeStepHandler(game)} type='button'>
 							{game}
 						</Button>
 					</li>
 				))}
-			</ButtonRow>
+			</S.Row>
 		</InnerWrapper>
 	) : null;
 };

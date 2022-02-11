@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ResultsWrapper = styled.div`
+export const Wrapper = styled.div`
 	margin: 1.5% auto;
 	width: 60%;
 

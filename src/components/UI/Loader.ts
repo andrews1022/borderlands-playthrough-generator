@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Loader = styled.div`
+export const Loader = styled.div`
 	@keyframes loaderSpin {
 		0% {
 			transform: rotate(0deg);
@@ -25,5 +25,3 @@ const Loader = styled.div`
 		width: 6rem;
 	}
 `;
-
-export default Loader;

@@ -4,11 +4,12 @@ import React, { useContext } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import { TagList, Tag } from './styles';
+import * as S from './styles';
 import { Button } from '../UI/Button';
 import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 import { ReminderText } from '../UI/ReminderText';
+import { Tag } from '../UI/Tag';
 
 // data
 import vaultHunters from '../../data/vaultHunters';
@@ -46,11 +47,11 @@ const VaultHunter = () => {
 				One of the following vault hunters below will be chosen at random for you.
 			</ReminderText>
 
-			<TagList>
+			<S.Row>
 				{matchingVaultHunters.map((vaultHunter) => (
 					<Tag key={vaultHunter.name}>{vaultHunter.name}</Tag>
 				))}
-			</TagList>
+			</S.Row>
 
 			<Button mode='secondary' onClick={changeStepHandler} type='button'>
 				Select Vault Hunter

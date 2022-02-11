@@ -4,9 +4,9 @@ import React, { useContext, useEffect } from 'react';
 import GeneratorContext from '../../context/generatorContext';
 
 // styled components
-import Loader from './styles';
 import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
+import { Loader } from '../UI/Loader';
 
 // data
 import {
@@ -28,23 +28,24 @@ const DeterminePlaythrough = () => {
 	// destructure state fields for cleaner jsx
 	const { currentStep, selectedGame, selectedRunType } = generatorContext.generatorState;
 
+	// reusable var for below
+	const isCurrentStep = currentStep === STEP_DETERMINE_PLAYTHROUGH;
+
 	// show this component only for a limited amount of time
 	useEffect(() => {
-		// eslint-disable-next-line operator-linebreak
-		const timer =
-			currentStep === STEP_DETERMINE_PLAYTHROUGH
-				? setTimeout(() => {
-						generatorContext.generatorDispatch({ type: 'SET_STEP_TO_RESULTS' });
-				  }, 1000)
-				: null;
+		const timerCallback = () => generatorContext.generatorDispatch({ type: 'SET_STEP_TO_RESULTS' });
+
+		const timer = () => setTimeout(timerCallback, 1000);
+
+		if (isCurrentStep) timer();
 
 		return () => {
-			clearTimeout(timer!);
+			if (isCurrentStep) clearTimeout(timer());
 		};
 	}, [currentStep]);
 
 	useEffect(() => {
-		const determineModifier = () => {
+		const determineModifier = (): void => {
 			// get matching data
 			const matchingAllegiances = allegianceOptions.filter((alg) => alg.game === selectedGame);
 			const matchingRarities = rarityOptions.filter((rar) => rar.game === selectedGame);
@@ -101,7 +102,7 @@ const DeterminePlaythrough = () => {
 		determineModifier();
 	}, [currentStep]);
 
-	return currentStep === STEP_DETERMINE_PLAYTHROUGH ? (
+	return isCurrentStep ? (
 		<InnerWrapper>
 			<Loader />
 

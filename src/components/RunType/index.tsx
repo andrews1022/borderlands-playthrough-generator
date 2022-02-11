@@ -3,15 +3,17 @@ import React, { useContext } from 'react';
 // context
 import GeneratorContext from '../../context/generatorContext';
 
+// components
+import Card from '../Card';
+
 // styled components
-import { Card, CardBottom, CardCopy, CardIcon, CardList, CardTop } from './styles';
-import { Button } from '../UI/Button';
+import * as S from './styles';
 import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 import { ReminderText } from '../UI/ReminderText';
 
 // data
-import { MainOption, options } from '../../data/options';
+import { options } from '../../data/options';
 
 // constants
 import { STEP_RUN_TYPE } from '../../constants/steps';
@@ -21,11 +23,6 @@ const RunType = () => {
 
 	// destructure state fields for cleaner jsx
 	const { currentStep } = generatorContext.generatorState;
-
-	// event functions
-	const changeStepHandler = (option: MainOption) => {
-		generatorContext.generatorDispatch({ type: 'SELECT_RUN_TYPE', payload: option.name });
-	};
 
 	return currentStep === STEP_RUN_TYPE ? (
 		<InnerWrapper>
@@ -37,28 +34,11 @@ const RunType = () => {
 				A modifier will be chosen at random based on your selection below.
 			</ReminderText>
 
-			<CardList>
+			<S.Row>
 				{options.map((option) => (
-					<Card key={option.name}>
-						<CardTop>
-							<CardIcon icon={option.icon} size='3x' />
-							<Heading as='h3' size='small'>
-								{option.name}
-							</Heading>
-						</CardTop>
-
-						<CardBottom>
-							<CardCopy>
-								{option.name === 'Allegiance' ? 'An' : 'A'} {option.name} run {option.description}.
-							</CardCopy>
-
-							<Button mode='secondary' onClick={() => changeStepHandler(option)} type='button'>
-								Select
-							</Button>
-						</CardBottom>
-					</Card>
+					<Card key={option.name} option={option} />
 				))}
-			</CardList>
+			</S.Row>
 		</InnerWrapper>
 	) : null;
 };

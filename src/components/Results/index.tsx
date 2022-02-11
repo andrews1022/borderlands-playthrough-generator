@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 // styled components
-import { Result, ResultsWrapper } from './styles';
+import * as S from './styles';
 import { Button } from '../UI/Button';
 import { Copy } from '../UI/Copy';
 import { Heading } from '../UI/Heading';
@@ -32,22 +32,22 @@ const Results = () => {
 				Here are the results!
 			</Heading>
 
-			<ResultsWrapper>
+			<S.Wrapper>
 				<Copy>
-					For your next playthrough of <Result>{selectedGame}</Result>, you&apos;ll play as{' '}
-					<Result>{selectedVaultHunter}</Result> with{' '}
-					<Result>
+					For your next playthrough of <S.Result>{selectedGame}</S.Result>, you&apos;ll play as{' '}
+					<S.Result>{selectedVaultHunter}</S.Result> with{' '}
+					<S.Result>
 						{modifierDescription ? `the ${selectedModifier} modifier` : `${selectedModifier}`}
-					</Result>
+					</S.Result>
 					!
 				</Copy>
 
 				{modifierDescription ? (
 					<Copy>
-						The <Result>{selectedModifier}</Result> modifier is when you {modifierDescription}.
+						The <S.Result>{selectedModifier}</S.Result> modifier is when you {modifierDescription}.
 					</Copy>
 				) : null}
-			</ResultsWrapper>
+			</S.Wrapper>
 
 			<Button mode='primary' onClick={changeStepHandler} type='button'>
 				Start Over?

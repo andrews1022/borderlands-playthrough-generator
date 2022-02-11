@@ -1,11 +1,5 @@
 // font awesome
-import {
-	faFistRaised,
-	faIndustry,
-	faStar,
-	faGamepad,
-	IconDefinition
-} from '@fortawesome/free-solid-svg-icons';
+import { faFistRaised, faIndustry, faStar, faGamepad } from '@fortawesome/free-solid-svg-icons';
 
 // constants
 import {
@@ -44,16 +38,13 @@ import {
 	RARITY_UNCOMMON
 } from '../constants/rarities';
 
-// types
+// global types
+import { MainOption } from '../types/types';
+
+// local types
 type AllegianceOption = {
 	manufacturer: string;
 	game: string;
-};
-
-export type MainOption = {
-	name: string;
-	description: string;
-	icon: IconDefinition;
 };
 
 type MiscellaneousOption = {
