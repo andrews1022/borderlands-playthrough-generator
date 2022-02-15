@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
 // context
-import GeneratorContext from '../../context/generatorContext';
+import GeneratorContext from '../../context/GeneratorContext';
 import { generatorReducer, initialGeneratorState } from '../../reducer/generatorReducer';
 
 // components

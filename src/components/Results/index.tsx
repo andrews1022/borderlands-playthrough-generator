@@ -8,7 +8,7 @@ import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 
 // context
-import GeneratorContext from '../../context/generatorContext';
+import GeneratorContext from '../../context/GeneratorContext';
 
 // constants
 import { STEP_RESULTS } from '../../constants/steps';

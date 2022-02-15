@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 
 // context
-import GeneratorContext from '../../context/generatorContext';
+import GeneratorContext from '../../context/GeneratorContext';
 
 // styled components
 import { Heading } from '../UI/Heading';

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 // context
-import GeneratorContext from '../../context/generatorContext';
+import GeneratorContext from '../../context/GeneratorContext';
 
 // components
 import Card from '../Card';
