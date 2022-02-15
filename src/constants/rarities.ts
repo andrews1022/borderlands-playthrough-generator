@@ -1,5 +1,3 @@
-export const s = '';
-
 export const RARITY_COMMON = 'Common';
 export const RARITY_UNCOMMON = 'Uncommon';
 export const RARITY_RARE = 'Rare';

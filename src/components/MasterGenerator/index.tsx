@@ -9,17 +9,17 @@ import RunType from '../RunType';
 import VaultHunter from '../VaultHunter';
 
 // styled components
-import MasterGeneratorWrapper from './styles';
+import * as S from './styles';
 
 const MasterGenerator = () => (
-	<MasterGeneratorWrapper>
+	<S.Wrapper>
 		<Intro />
 		<Game />
 		<VaultHunter />
 		<RunType />
 		<DeterminePlaythrough />
 		<Results />
-	</MasterGeneratorWrapper>
+	</S.Wrapper>
 );
 
 export default MasterGenerator;

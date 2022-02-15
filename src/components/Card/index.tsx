@@ -9,7 +9,7 @@ import { Button } from '../UI/Button';
 import { Heading } from '../UI/Heading';
 
 // types
-import { MainOption } from '../../types/types';
+import type { MainOption } from '../../types/types';
 
 // props
 type CardProps = {

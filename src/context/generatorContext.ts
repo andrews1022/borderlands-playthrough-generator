@@ -1,9 +1,8 @@
-import { createContext, Dispatch } from 'react';
-import {
-	GeneratorActions,
-	GeneratorState,
-	initialGeneratorState
-} from '../reducer/generatorReducer';
+import { createContext } from 'react';
+import type { Dispatch } from 'react';
+
+import { initialGeneratorState } from '../reducer/generatorReducer';
+import type { GeneratorActions, GeneratorState } from '../reducer/generatorReducer';
 
 type GeneratorContextType = {
 	generatorState: GeneratorState;

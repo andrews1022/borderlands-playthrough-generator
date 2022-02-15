@@ -42,5 +42,5 @@ export const Heading = styled.div<HeadingProps>`
 	font-weight: 800;
 	line-height: 1.25;
 
-	${(props) => setHeadingSize(props.size)}
+	${({ size }) => setHeadingSize(size)}
 `;
