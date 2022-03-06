@@ -21,43 +21,43 @@ import { STEP_VAULT_HUNTER } from '../../constants/steps';
 import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
 
 const VaultHunter = () => {
-	const generatorContext = useContext(GeneratorContext);
+  const generatorContext = useContext(GeneratorContext);
 
-	// destructure state fields for cleaner jsx
-	const { currentStep, selectedGame } = generatorContext.generatorState;
+  // destructure state fields for cleaner jsx
+  const { currentStep, selectedGame } = generatorContext.generatorState;
 
-	// reusable var
-	const matchingVaultHunters = vaultHunters.filter((hunter) => hunter.game === selectedGame);
+  // reusable var
+  const matchingVaultHunters = vaultHunters.filter((hunter) => hunter.game === selectedGame);
 
-	// event functions
-	const changeStepHandler = () => {
-		generatorContext.generatorDispatch({
-			type: 'SELECT_VAULT_HUNTER',
-			payload: matchingVaultHunters[getRandomArrayIndex(matchingVaultHunters)].name
-		});
-	};
+  // event functions
+  const changeStepHandler = () => {
+    generatorContext.generatorDispatch({
+      type: 'SELECT_VAULT_HUNTER',
+      payload: matchingVaultHunters[getRandomArrayIndex(matchingVaultHunters)].name
+    });
+  };
 
-	return currentStep === STEP_VAULT_HUNTER ? (
-		<InnerWrapper>
-			<Heading as='h2' size='medium'>
-				Select Your Vault Hunter
-			</Heading>
+  return currentStep === STEP_VAULT_HUNTER ? (
+    <InnerWrapper>
+      <Heading as='h2' size='medium'>
+        Select Your Vault Hunter
+      </Heading>
 
-			<ReminderText>
-				One of the following vault hunters below will be chosen at random for you.
-			</ReminderText>
+      <ReminderText>
+        One of the following vault hunters below will be chosen at random for you.
+      </ReminderText>
 
-			<S.Row>
-				{matchingVaultHunters.map((vaultHunter) => (
-					<Tag key={vaultHunter.name}>{vaultHunter.name}</Tag>
-				))}
-			</S.Row>
+      <S.Row>
+        {matchingVaultHunters.map((vaultHunter) => (
+          <Tag key={vaultHunter.name}>{vaultHunter.name}</Tag>
+        ))}
+      </S.Row>
 
-			<Button mode='secondary' onClick={changeStepHandler} type='button'>
-				Select Vault Hunter
-			</Button>
-		</InnerWrapper>
-	) : null;
+      <Button mode='secondary' onClick={changeStepHandler} type='button'>
+        Select Vault Hunter
+      </Button>
+    </InnerWrapper>
+  ) : null;
 };
 
 export default VaultHunter;

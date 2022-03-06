@@ -14,46 +14,46 @@ import GeneratorContext from '../../context/GeneratorContext';
 import { STEP_RESULTS } from '../../constants/steps';
 
 const Results = () => {
-	const generatorContext = useContext(GeneratorContext);
+  const generatorContext = useContext(GeneratorContext);
 
-	// destructure state fields for cleaner jsx
-	// eslint-disable-next-line operator-linebreak
-	const { currentStep, modifierDescription, selectedGame, selectedModifier, selectedVaultHunter } =
-		generatorContext.generatorState;
+  // destructure state fields for cleaner jsx
+  // eslint-disable-next-line operator-linebreak
+  const { currentStep, modifierDescription, selectedGame, selectedModifier, selectedVaultHunter } =
+    generatorContext.generatorState;
 
-	// event functions
-	const changeStepHandler = () => {
-		generatorContext.generatorDispatch({ type: 'RESTART' });
-	};
+  // event functions
+  const changeStepHandler = () => {
+    generatorContext.generatorDispatch({ type: 'RESTART' });
+  };
 
-	return currentStep === STEP_RESULTS ? (
-		<InnerWrapper>
-			<Heading as='h2' size='medium'>
-				Here are the results!
-			</Heading>
+  return currentStep === STEP_RESULTS ? (
+    <InnerWrapper>
+      <Heading as='h2' size='medium'>
+        Here are the results!
+      </Heading>
 
-			<S.Wrapper>
-				<Copy>
-					For your next playthrough of <S.Result>{selectedGame}</S.Result>, you&apos;ll play as{' '}
-					<S.Result>{selectedVaultHunter}</S.Result> with{' '}
-					<S.Result>
-						{modifierDescription ? `the ${selectedModifier} modifier` : `${selectedModifier}`}
-					</S.Result>
-					!
-				</Copy>
+      <S.Wrapper>
+        <Copy>
+          For your next playthrough of <S.Result>{selectedGame}</S.Result>, you&apos;ll play as{' '}
+          <S.Result>{selectedVaultHunter}</S.Result> with{' '}
+          <S.Result>
+            {modifierDescription ? `the ${selectedModifier} modifier` : `${selectedModifier}`}
+          </S.Result>
+          !
+        </Copy>
 
-				{modifierDescription ? (
-					<Copy>
-						The <S.Result>{selectedModifier}</S.Result> modifier is when you {modifierDescription}.
-					</Copy>
-				) : null}
-			</S.Wrapper>
+        {modifierDescription ? (
+          <Copy>
+            The <S.Result>{selectedModifier}</S.Result> modifier is when you {modifierDescription}.
+          </Copy>
+        ) : null}
+      </S.Wrapper>
 
-			<Button mode='primary' onClick={changeStepHandler} type='button'>
-				Start Over?
-			</Button>
-		</InnerWrapper>
-	) : null;
+      <Button mode='primary' onClick={changeStepHandler} type='button'>
+        Start Over?
+      </Button>
+    </InnerWrapper>
+  ) : null;
 };
 
 export default Results;

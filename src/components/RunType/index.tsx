@@ -19,28 +19,28 @@ import { options } from '../../data/options';
 import { STEP_RUN_TYPE } from '../../constants/steps';
 
 const RunType = () => {
-	const generatorContext = useContext(GeneratorContext);
+  const generatorContext = useContext(GeneratorContext);
 
-	// destructure state fields for cleaner jsx
-	const { currentStep } = generatorContext.generatorState;
+  // destructure state fields for cleaner jsx
+  const { currentStep } = generatorContext.generatorState;
 
-	return currentStep === STEP_RUN_TYPE ? (
-		<InnerWrapper>
-			<Heading as='h2' size='medium'>
-				Select Your Run Type
-			</Heading>
+  return currentStep === STEP_RUN_TYPE ? (
+    <InnerWrapper>
+      <Heading as='h2' size='medium'>
+        Select Your Run Type
+      </Heading>
 
-			<ReminderText>
-				A modifier will be chosen at random based on your selection below.
-			</ReminderText>
+      <ReminderText>
+        A modifier will be chosen at random based on your selection below.
+      </ReminderText>
 
-			<S.Row>
-				{options.map((option) => (
-					<Card key={option.name} option={option} />
-				))}
-			</S.Row>
-		</InnerWrapper>
-	) : null;
+      <S.Row>
+        {options.map((option) => (
+          <Card key={option.name} option={option} />
+        ))}
+      </S.Row>
+    </InnerWrapper>
+  ) : null;
 };
 
 export default RunType;

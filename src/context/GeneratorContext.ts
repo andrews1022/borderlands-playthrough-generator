@@ -5,13 +5,13 @@ import { initialGeneratorState } from '../reducer/generatorReducer';
 import type { GeneratorActions, GeneratorState } from '../reducer/generatorReducer';
 
 type GeneratorContextType = {
-	generatorState: GeneratorState;
-	generatorDispatch: Dispatch<GeneratorActions>;
+  generatorState: GeneratorState;
+  generatorDispatch: Dispatch<GeneratorActions>;
 };
 
 const GeneratorContext = createContext<GeneratorContextType>({
-	generatorState: initialGeneratorState,
-	generatorDispatch: () => null
+  generatorState: initialGeneratorState,
+  generatorDispatch: () => null
 });
 
 export default GeneratorContext;

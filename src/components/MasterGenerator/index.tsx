@@ -12,14 +12,14 @@ import VaultHunter from '../VaultHunter';
 import * as S from './styles';
 
 const MasterGenerator = () => (
-	<S.Wrapper>
-		<Intro />
-		<Game />
-		<VaultHunter />
-		<RunType />
-		<DeterminePlaythrough />
-		<Results />
-	</S.Wrapper>
+  <S.Wrapper>
+    <Intro />
+    <Game />
+    <VaultHunter />
+    <RunType />
+    <DeterminePlaythrough />
+    <Results />
+  </S.Wrapper>
 );
 
 export default MasterGenerator;

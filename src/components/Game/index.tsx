@@ -16,33 +16,33 @@ import games from '../../data/games';
 import { STEP_GAME } from '../../constants/steps';
 
 const Game = () => {
-	const generatorContext = useContext(GeneratorContext);
+  const generatorContext = useContext(GeneratorContext);
 
-	// destructure state fields for cleaner jsx
-	const { currentStep } = generatorContext.generatorState;
+  // destructure state fields for cleaner jsx
+  const { currentStep } = generatorContext.generatorState;
 
-	// event functions
-	const changeStepHandler = (game: string) => {
-		generatorContext.generatorDispatch({ type: 'SELECT_GAME', payload: game });
-	};
+  // event functions
+  const changeStepHandler = (game: string) => {
+    generatorContext.generatorDispatch({ type: 'SELECT_GAME', payload: game });
+  };
 
-	return currentStep === STEP_GAME ? (
-		<InnerWrapper>
-			<Heading as='h2' size='medium'>
-				Select Your Game
-			</Heading>
+  return currentStep === STEP_GAME ? (
+    <InnerWrapper>
+      <Heading as='h2' size='medium'>
+        Select Your Game
+      </Heading>
 
-			<S.Row>
-				{games.map((game) => (
-					<li key={game}>
-						<Button mode='secondary' onClick={() => changeStepHandler(game)} type='button'>
-							{game}
-						</Button>
-					</li>
-				))}
-			</S.Row>
-		</InnerWrapper>
-	) : null;
+      <S.Row>
+        {games.map((game) => (
+          <li key={game}>
+            <Button mode='secondary' onClick={() => changeStepHandler(game)} type='button'>
+              {game}
+            </Button>
+          </li>
+        ))}
+      </S.Row>
+    </InnerWrapper>
+  ) : null;
 };
 
 export default Game;

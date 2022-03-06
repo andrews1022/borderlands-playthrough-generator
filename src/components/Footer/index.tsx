@@ -15,18 +15,18 @@ import { ScreenReaderText } from '../UI/ScreenReaderText';
 import { URL_TWITTER } from '../../constants/urls';
 
 const Footer = () => (
-	<S.Footer>
-		<S.Copy>
-			© Borderlands Playthrough Generator {new Date().getFullYear()}.
-			<br />
-			All rights reserved. Various trademarks held by their respective owners.
-		</S.Copy>
+  <S.Footer>
+    <S.Copy>
+      © Borderlands Playthrough Generator {new Date().getFullYear()}.
+      <br />
+      All rights reserved. Various trademarks held by their respective owners.
+    </S.Copy>
 
-		<ExternalLink href={URL_TWITTER}>
-			<FontAwesomeIcon icon={faTwitter} size='lg' />
-			<ScreenReaderText>Go to my Twitter</ScreenReaderText>
-		</ExternalLink>
-	</S.Footer>
+    <ExternalLink href={URL_TWITTER}>
+      <FontAwesomeIcon icon={faTwitter} size='lg' />
+      <ScreenReaderText>Go to my Twitter</ScreenReaderText>
+    </ExternalLink>
+  </S.Footer>
 );
 
 export default Footer;

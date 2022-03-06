@@ -12,16 +12,16 @@ import MasterGenerator from '../MasterGenerator';
 import * as S from './styles';
 
 const App = () => {
-	const [state, dispatch] = useReducer(generatorReducer, initialGeneratorState);
+  const [state, dispatch] = useReducer(generatorReducer, initialGeneratorState);
 
-	return (
-		<S.Wrapper>
-			<GeneratorContext.Provider value={{ generatorState: state, generatorDispatch: dispatch }}>
-				<MasterGenerator />
-				<Footer />
-			</GeneratorContext.Provider>
-		</S.Wrapper>
-	);
+  return (
+    <S.Wrapper>
+      <GeneratorContext.Provider value={{ generatorState: state, generatorDispatch: dispatch }}>
+        <MasterGenerator />
+        <Footer />
+      </GeneratorContext.Provider>
+    </S.Wrapper>
+  );
 };
 
 export default App;
