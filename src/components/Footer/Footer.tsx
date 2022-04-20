@@ -1,20 +1,18 @@
-import React from 'react';
-
 // font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 // components
-import ExternalLink from '../ExternalLink';
+import ExternalLink from '../ExternalLink/ExternalLink';
 
 // styled components
-import * as S from './styles';
+import * as S from './Footer.styles';
 import { ScreenReaderText } from '../UI/ScreenReaderText';
 
 // constants
 import { URL_TWITTER } from '../../constants/urls';
 
-const Footer = () => (
+const Footer = (): JSX.Element => (
   <S.Footer>
     <S.Copy>
       © Borderlands Playthrough Generator {new Date().getFullYear()}.

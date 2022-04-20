@@ -1,17 +1,17 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 
 // context
 import GeneratorContext from '../../context/GeneratorContext';
 import { generatorReducer, initialGeneratorState } from '../../reducer/generatorReducer';
 
 // components
-import Footer from '../Footer';
-import MasterGenerator from '../MasterGenerator';
+import Footer from '../Footer/Footer';
+import MasterGenerator from '../MasterGenerator/MasterGenerator';
 
 // styled components
-import * as S from './styles';
+import * as S from './App.styles';
 
-const App = () => {
+const App = (): JSX.Element => {
   const [state, dispatch] = useReducer(generatorReducer, initialGeneratorState);
 
   return (

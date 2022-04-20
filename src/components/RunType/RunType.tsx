@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
-
-// context
-import GeneratorContext from '../../context/GeneratorContext';
-
 // components
-import Card from '../Card';
+import Card from '../Card/Card';
 
 // styled components
-import * as S from './styles';
+import * as S from './RunType.styles';
 import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 import { ReminderText } from '../UI/ReminderText';
+
+// custom hooks
+import useGenerator from '../../hooks/useGenerator';
 
 // data
 import { options } from '../../data/options';
@@ -18,13 +16,10 @@ import { options } from '../../data/options';
 // constants
 import { STEP_RUN_TYPE } from '../../constants/steps';
 
-const RunType = () => {
-  const generatorContext = useContext(GeneratorContext);
+const RunType = (): JSX.Element | null => {
+  const [state] = useGenerator();
 
-  // destructure state fields for cleaner jsx
-  const { currentStep } = generatorContext.generatorState;
-
-  return currentStep === STEP_RUN_TYPE ? (
+  return state.currentStep === STEP_RUN_TYPE ? (
     <InnerWrapper>
       <Heading as='h2' size='medium'>
         Select Your Run Type

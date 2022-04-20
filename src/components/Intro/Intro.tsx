@@ -1,29 +1,24 @@
-import React, { useContext } from 'react';
-
-// context
-import GeneratorContext from '../../context/GeneratorContext';
-
 // styled components
-import * as S from './styles';
+import * as S from './Intro.styles';
 import { Button } from '../UI/Button';
 import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 
+// custom hooks
+import useGenerator from '../../hooks/useGenerator';
+
 // constants
 import { STEP_INTRO } from '../../constants/steps';
 
-const Intro = () => {
-  const generatorContext = useContext(GeneratorContext);
-
-  // destructure state fields for cleaner jsx
-  const { currentStep } = generatorContext.generatorState;
+const Intro = (): JSX.Element | null => {
+  const [state, dispatch] = useGenerator();
 
   // event functions
   const changeStepHandler = () => {
-    generatorContext.generatorDispatch({ type: 'SET_STEP_TO_GAME' });
+    dispatch({ type: 'SET_STEP_TO_GAME' });
   };
 
-  return currentStep === STEP_INTRO ? (
+  return state.currentStep === STEP_INTRO ? (
     <InnerWrapper>
       <Heading as='h1' size='large'>
         Borderlands Playthrough Generator

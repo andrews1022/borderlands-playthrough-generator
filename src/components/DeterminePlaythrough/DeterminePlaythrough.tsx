@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react';
-
-// context
-import GeneratorContext from '../../context/GeneratorContext';
+import { useEffect } from 'react';
 
 // styled components
 import { Heading } from '../UI/Heading';
 import { InnerWrapper } from '../UI/InnerWrapper';
 import { Loader } from '../UI/Loader';
+
+// custom hooks
+import useGenerator from '../../hooks/useGenerator';
 
 // data
 import {
@@ -22,38 +22,39 @@ import { STEP_DETERMINE_PLAYTHROUGH } from '../../constants/steps';
 // utils
 import { getRandomArrayIndex } from '../../utils/getRandomArrayIndex';
 
-const DeterminePlaythrough = () => {
-  const generatorContext = useContext(GeneratorContext);
-
-  // destructure state fields for cleaner jsx
-  const { currentStep, selectedGame, selectedRunType } = generatorContext.generatorState;
+const DeterminePlaythrough = (): JSX.Element | null => {
+  const [state, dispatch] = useGenerator();
 
   // reusable var for below
-  const isCurrentStep = currentStep === STEP_DETERMINE_PLAYTHROUGH;
+  const isCurrentStep = state.currentStep === STEP_DETERMINE_PLAYTHROUGH;
 
   // show this component only for a limited amount of time
   useEffect(() => {
-    const timerCallback = () => generatorContext.generatorDispatch({ type: 'SET_STEP_TO_RESULTS' });
+    const timerCallback = () => dispatch({ type: 'SET_STEP_TO_RESULTS' });
 
     const timer = () => setTimeout(timerCallback, 1000);
 
-    if (isCurrentStep) timer();
+    if (isCurrentStep) {
+      timer();
+    }
 
     return () => {
       if (isCurrentStep) clearTimeout(timer());
     };
-  }, [currentStep]);
+  }, [state.currentStep]);
 
   useEffect(() => {
     const determineModifier = (): void => {
       // get matching data
-      const matchingAllegiances = allegianceOptions.filter((alg) => alg.game === selectedGame);
-      const matchingRarities = rarityOptions.filter((rar) => rar.game === selectedGame);
+      const matchingAllegiances = allegianceOptions.filter(
+        (alg) => alg.game === state.selectedGame
+      );
+      const matchingRarities = rarityOptions.filter((rar) => rar.game === state.selectedGame);
       const matchingMiscObj = miscellaneousOptions[getRandomArrayIndex(miscellaneousOptions)];
 
-      switch (selectedRunType) {
+      switch (state.selectedRunType) {
         case 'Superiority':
-          generatorContext.generatorDispatch({
+          dispatch({
             type: 'SET_MODIFIER',
             payload: {
               name: `${superiorityOptions[getRandomArrayIndex(superiorityOptions)]} superiority`,
@@ -63,7 +64,7 @@ const DeterminePlaythrough = () => {
           break;
 
         case 'Allegiance':
-          generatorContext.generatorDispatch({
+          dispatch({
             type: 'SET_MODIFIER',
             payload: {
               name: `${
@@ -75,7 +76,7 @@ const DeterminePlaythrough = () => {
           break;
 
         case 'Rarity':
-          generatorContext.generatorDispatch({
+          dispatch({
             type: 'SET_MODIFIER',
             payload: {
               name: `${matchingRarities[getRandomArrayIndex(matchingRarities)].rarity} items only`,
@@ -85,7 +86,7 @@ const DeterminePlaythrough = () => {
           break;
 
         case 'Miscellaneous':
-          generatorContext.generatorDispatch({
+          dispatch({
             type: 'SET_MODIFIER',
             payload: {
               name: `${matchingMiscObj.name}`,
@@ -100,7 +101,7 @@ const DeterminePlaythrough = () => {
     };
 
     determineModifier();
-  }, [currentStep]);
+  }, [state.currentStep]);
 
   return isCurrentStep ? (
     <InnerWrapper>

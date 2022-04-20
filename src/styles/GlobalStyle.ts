@@ -30,8 +30,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  button, 
-  input, 
+  button,
+  input,
+  select,
   textarea {
     font-family: ${fonts.openSans};
   }

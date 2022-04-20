@@ -1,6 +1,8 @@
+/* eslint-disable indent */
+
 import styled from 'styled-components';
 
-// props
+// props type
 type ButtonProps = {
   mode: 'primary' | 'secondary';
 };

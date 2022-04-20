@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
-// type
+// heading size type
 type HeadingSize = 'small' | 'medium' | 'large';
 
-// props
+// props type
 type HeadingProps = {
   size: HeadingSize;
 };

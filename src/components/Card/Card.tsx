@@ -1,22 +1,22 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 // context
 import GeneratorContext from '../../context/GeneratorContext';
 
 // styled components
-import * as S from './styles';
+import * as S from './Card.styles';
 import { Button } from '../UI/Button';
 import { Heading } from '../UI/Heading';
 
-// types
+// custom types
 import type { MainOption } from '../../types/types';
 
-// props
+// props type
 type CardProps = {
   option: MainOption;
 };
 
-const Card = ({ option }: CardProps) => {
+const Card = ({ option }: CardProps): JSX.Element => {
   const generatorContext = useContext(GeneratorContext);
 
   // event functions
