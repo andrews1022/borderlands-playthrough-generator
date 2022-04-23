@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 
 // context
 import GeneratorContext from '../../context/GeneratorContext';
-import { generatorReducer, initialGeneratorState } from '../../reducer/generatorReducer';
+import { generatorReducer, initialGeneratorState } from '../../reducers/generatorReducer';
 
 // components
 import Footer from '../Footer/Footer';
