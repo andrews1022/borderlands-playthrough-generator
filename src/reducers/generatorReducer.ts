@@ -6,7 +6,7 @@ import {
   STEP_RESULTS,
   STEP_RUN_TYPE,
   STEP_VAULT_HUNTER
-} from '../constants/steps';
+} from "../constants/steps";
 
 export type GeneratorState = {
   currentStep: string;
@@ -18,21 +18,21 @@ export type GeneratorState = {
 };
 
 export type GeneratorActions =
-  | { type: 'RESTART' }
-  | { type: 'SELECT_GAME'; payload: string }
-  | { type: 'SELECT_RUN_TYPE'; payload: string }
-  | { type: 'SELECT_VAULT_HUNTER'; payload: string }
-  | { type: 'SET_MODIFIER'; payload: { name: string; description: string | null } }
-  | { type: 'SET_STEP_TO_GAME' }
-  | { type: 'SET_STEP_TO_RESULTS' };
+  | { type: "RESTART" }
+  | { type: "SELECT_GAME"; payload: string }
+  | { type: "SELECT_RUN_TYPE"; payload: string }
+  | { type: "SELECT_VAULT_HUNTER"; payload: string }
+  | { type: "SET_MODIFIER"; payload: { name: string; description: string | null } }
+  | { type: "SET_STEP_TO_GAME" }
+  | { type: "SET_STEP_TO_RESULTS" };
 
 export const initialGeneratorState: GeneratorState = {
   currentStep: STEP_INTRO,
-  modifierDescription: '',
-  selectedGame: '',
-  selectedModifier: '',
-  selectedRunType: '',
-  selectedVaultHunter: ''
+  modifierDescription: "",
+  selectedGame: "",
+  selectedModifier: "",
+  selectedRunType: "",
+  selectedVaultHunter: ""
 };
 
 export const generatorReducer = (
@@ -40,11 +40,11 @@ export const generatorReducer = (
   action: GeneratorActions
 ): GeneratorState => {
   switch (action.type) {
-    case 'RESTART': {
+    case "RESTART": {
       return initialGeneratorState;
     }
 
-    case 'SELECT_GAME': {
+    case "SELECT_GAME": {
       return {
         ...state,
         currentStep: STEP_VAULT_HUNTER,
@@ -52,7 +52,7 @@ export const generatorReducer = (
       };
     }
 
-    case 'SELECT_RUN_TYPE': {
+    case "SELECT_RUN_TYPE": {
       return {
         ...state,
         currentStep: STEP_DETERMINE_PLAYTHROUGH,
@@ -60,7 +60,7 @@ export const generatorReducer = (
       };
     }
 
-    case 'SELECT_VAULT_HUNTER': {
+    case "SELECT_VAULT_HUNTER": {
       return {
         ...state,
         currentStep: STEP_RUN_TYPE,
@@ -68,7 +68,7 @@ export const generatorReducer = (
       };
     }
 
-    case 'SET_MODIFIER': {
+    case "SET_MODIFIER": {
       return {
         ...state,
         selectedModifier: action.payload.name,
@@ -76,14 +76,14 @@ export const generatorReducer = (
       };
     }
 
-    case 'SET_STEP_TO_GAME': {
+    case "SET_STEP_TO_GAME": {
       return {
         ...state,
         currentStep: STEP_GAME
       };
     }
 
-    case 'SET_STEP_TO_RESULTS': {
+    case "SET_STEP_TO_RESULTS": {
       return {
         ...state,
         currentStep: STEP_RESULTS

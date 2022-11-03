@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ReminderText = styled.p`
   font-size: 0.875rem;

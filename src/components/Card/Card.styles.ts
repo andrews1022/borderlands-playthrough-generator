@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Copy } from '../UI/Copy';
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Copy } from "../UI/Copy";
 
 export const Wrapper = styled.li`
   border: 0.25rem solid ${({ theme }) => theme.shades.whiteSmoke};

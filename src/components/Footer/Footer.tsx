@@ -1,16 +1,16 @@
 // font awesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 // components
-import ExternalLink from '../ExternalLink/ExternalLink';
+import ExternalLink from "../ExternalLink/ExternalLink";
 
 // styled components
-import * as S from './Footer.styles';
-import { ScreenReaderText } from '../UI/ScreenReaderText';
+import * as S from "./Footer.styles";
+import { ScreenReaderText } from "../UI/ScreenReaderText";
 
 // constants
-import { URL_TWITTER } from '../../constants/urls';
+import { URL_TWITTER } from "../../constants/urls";
 
 const Footer = (): JSX.Element => (
   <S.Footer>
@@ -21,7 +21,7 @@ const Footer = (): JSX.Element => (
     </S.Copy>
 
     <ExternalLink href={URL_TWITTER}>
-      <FontAwesomeIcon icon={faTwitter} size='lg' />
+      <FontAwesomeIcon icon={faTwitter} size="lg" />
       <ScreenReaderText>Go to my Twitter</ScreenReaderText>
     </ExternalLink>
   </S.Footer>

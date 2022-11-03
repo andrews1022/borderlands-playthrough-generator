@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 // heading size type
-type HeadingSize = 'small' | 'medium' | 'large';
+type HeadingSize = "small" | "medium" | "large";
 
 // props type
 type HeadingProps = {
@@ -10,21 +10,21 @@ type HeadingProps = {
 
 const setHeadingSize = (size: HeadingSize) => {
   switch (size) {
-    case 'small': {
+    case "small": {
       return css`
         font-size: 1.5rem;
         letter-spacing: 0px;
       `;
     }
 
-    case 'medium': {
+    case "medium": {
       return css`
         font-size: 2.75rem;
         letter-spacing: -2px;
       `;
     }
 
-    case 'large': {
+    case "large": {
       return css`
         font-size: clamp(4rem, 5vw, 5.5rem);
         letter-spacing: -2px;
