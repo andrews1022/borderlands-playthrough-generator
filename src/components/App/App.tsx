@@ -11,7 +11,7 @@ import MasterGenerator from "../MasterGenerator/MasterGenerator";
 // styled components
 import * as S from "./App.styles";
 
-const App = (): JSX.Element => {
+const App = () => {
   const [state, dispatch] = useReducer(generatorReducer, initialGeneratorState);
 
   return (

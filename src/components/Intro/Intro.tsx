@@ -10,7 +10,7 @@ import useGenerator from "../../hooks/useGenerator";
 // constants
 import { STEP_INTRO } from "../../constants/steps";
 
-const Intro = (): JSX.Element | null => {
+const Intro = () => {
   const [state, dispatch] = useGenerator();
 
   // event functions

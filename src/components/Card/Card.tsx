@@ -12,11 +12,11 @@ import { Heading } from "../UI/Heading";
 import type { MainOption } from "../../types/types";
 
 // props type
-type CardProps = {
+interface CardProps {
   option: MainOption;
-};
+}
 
-const Card = ({ option }: CardProps): JSX.Element => {
+const Card = ({ option }: CardProps) => {
   const generatorContext = useContext(GeneratorContext);
 
   // event functions

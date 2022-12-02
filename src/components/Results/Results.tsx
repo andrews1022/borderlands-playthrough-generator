@@ -11,7 +11,7 @@ import useGenerator from "../../hooks/useGenerator";
 // constants
 import { STEP_RESULTS } from "../../constants/steps";
 
-const Results = (): JSX.Element | null => {
+const Results = () => {
   const [state, dispatch] = useGenerator();
 
   // event functions

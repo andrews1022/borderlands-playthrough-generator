@@ -12,7 +12,7 @@ import { ScreenReaderText } from "../UI/ScreenReaderText";
 // constants
 import { URL_TWITTER } from "../../constants/urls";
 
-const Footer = (): JSX.Element => (
+const Footer = () => (
   <S.Footer>
     <S.Copy>
       © Borderlands Playthrough Generator {new Date().getFullYear()}.

@@ -5,17 +5,17 @@ import {
   STEP_INTRO,
   STEP_RESULTS,
   STEP_RUN_TYPE,
-  STEP_VAULT_HUNTER
+  STEP_VAULT_HUNTER,
 } from "../constants/steps";
 
-export type GeneratorState = {
+export interface GeneratorState {
   currentStep: string;
   modifierDescription: string | null;
   selectedGame: string;
   selectedModifier: string;
   selectedRunType: string;
   selectedVaultHunter: string;
-};
+}
 
 export type GeneratorActions =
   | { type: "RESTART" }
@@ -32,7 +32,7 @@ export const initialGeneratorState: GeneratorState = {
   selectedGame: "",
   selectedModifier: "",
   selectedRunType: "",
-  selectedVaultHunter: ""
+  selectedVaultHunter: "",
 };
 
 export const generatorReducer = (
@@ -48,7 +48,7 @@ export const generatorReducer = (
       return {
         ...state,
         currentStep: STEP_VAULT_HUNTER,
-        selectedGame: action.payload
+        selectedGame: action.payload,
       };
     }
 
@@ -56,7 +56,7 @@ export const generatorReducer = (
       return {
         ...state,
         currentStep: STEP_DETERMINE_PLAYTHROUGH,
-        selectedRunType: action.payload
+        selectedRunType: action.payload,
       };
     }
 
@@ -64,7 +64,7 @@ export const generatorReducer = (
       return {
         ...state,
         currentStep: STEP_RUN_TYPE,
-        selectedVaultHunter: action.payload
+        selectedVaultHunter: action.payload,
       };
     }
 
@@ -72,21 +72,21 @@ export const generatorReducer = (
       return {
         ...state,
         selectedModifier: action.payload.name,
-        modifierDescription: action.payload.description
+        modifierDescription: action.payload.description,
       };
     }
 
     case "SET_STEP_TO_GAME": {
       return {
         ...state,
-        currentStep: STEP_GAME
+        currentStep: STEP_GAME,
       };
     }
 
     case "SET_STEP_TO_RESULTS": {
       return {
         ...state,
-        currentStep: STEP_RESULTS
+        currentStep: STEP_RESULTS,
       };
     }
 

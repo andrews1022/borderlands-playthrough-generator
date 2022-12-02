@@ -20,7 +20,7 @@ import { STEP_VAULT_HUNTER } from "../../constants/steps";
 // utils
 import { getRandomArrayIndex } from "../../utils/getRandomArrayIndex";
 
-const VaultHunter = (): JSX.Element | null => {
+const VaultHunter = () => {
   const [state, dispatch] = useGenerator();
 
   // reusable var
@@ -33,7 +33,7 @@ const VaultHunter = (): JSX.Element | null => {
   const changeStepHandler = () => {
     dispatch({
       type: "SELECT_VAULT_HUNTER",
-      payload: matchingVaultHunters[getRandomArrayIndex(matchingVaultHunters)].name
+      payload: matchingVaultHunters[getRandomArrayIndex(matchingVaultHunters)].name,
     });
   };
 

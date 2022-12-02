@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 
 // props type
-type ExternalLinkProps = {
+interface ExternalLinkProps {
   children: ReactNode;
   href: string;
-};
+}
 
-const ExternalLink = ({ children, href }: ExternalLinkProps): JSX.Element => (
+const ExternalLink = ({ children, href }: ExternalLinkProps) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     {children}
   </a>

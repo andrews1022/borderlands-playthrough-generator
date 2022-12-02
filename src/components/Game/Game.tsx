@@ -13,7 +13,7 @@ import games from "../../data/games";
 // constants
 import { STEP_GAME } from "../../constants/steps";
 
-const Game = (): JSX.Element | null => {
+const Game = () => {
   const [state, dispatch] = useGenerator();
 
   // event functions

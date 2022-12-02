@@ -3,9 +3,9 @@
 import styled from "styled-components";
 
 // props type
-type ButtonProps = {
+interface ButtonProps {
   mode: "primary" | "secondary";
-};
+}
 
 export const Button = styled.button<ButtonProps>`
   background-color: transparent;

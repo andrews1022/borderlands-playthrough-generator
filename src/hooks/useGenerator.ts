@@ -4,7 +4,9 @@ import type { Dispatch } from "react";
 import GeneratorContext from "../context/GeneratorContext";
 import type { GeneratorActions, GeneratorState } from "../reducers/generatorReducer";
 
-const useGenerator = (): [GeneratorState, Dispatch<GeneratorActions>] => {
+type UseGeneratorReturn = [GeneratorState, Dispatch<GeneratorActions>];
+
+const useGenerator = (): UseGeneratorReturn => {
   const { generatorDispatch: dispatch, generatorState: state } = useContext(GeneratorContext);
 
   return [state, dispatch];

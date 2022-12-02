@@ -11,7 +11,7 @@ import VaultHunter from "../VaultHunter/VaultHunter";
 // styled components
 import * as S from "./MasterGenerator.styles";
 
-const MasterGenerator = (): JSX.Element => (
+const MasterGenerator = () => (
   <S.Wrapper>
     <Intro />
     <Game />

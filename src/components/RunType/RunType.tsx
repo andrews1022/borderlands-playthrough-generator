@@ -16,7 +16,7 @@ import { options } from "../../data/options";
 // constants
 import { STEP_RUN_TYPE } from "../../constants/steps";
 
-const RunType = (): JSX.Element | null => {
+const RunType = () => {
   const [state] = useGenerator();
 
   return state.currentStep === STEP_RUN_TYPE ? (

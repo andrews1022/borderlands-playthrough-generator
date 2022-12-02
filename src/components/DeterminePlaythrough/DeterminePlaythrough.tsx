@@ -8,19 +8,11 @@ import { Loader } from "../UI/Loader";
 // custom hooks
 import useGenerator from "../../hooks/useGenerator";
 
-// data
-import {
-  allegianceOptions,
-  miscellaneousOptions,
-  rarityOptions,
-  superiorityOptions
-} from "../../data/options";
-
 // constants
 import { STEP_DETERMINE_PLAYTHROUGH } from "../../constants/steps";
 
 // utils
-import { getRandomArrayIndex } from "../../utils/getRandomArrayIndex";
+import { determineModifier } from "../../utils/determineModifier";
 
 const DeterminePlaythrough = (): JSX.Element | null => {
   const [state, dispatch] = useGenerator();
@@ -44,64 +36,11 @@ const DeterminePlaythrough = (): JSX.Element | null => {
   }, [dispatch, isCurrentStep, state.currentStep]);
 
   useEffect(() => {
-    const determineModifier = (): void => {
-      // get matching data
-      const matchingAllegiances = allegianceOptions.filter(
-        (alg) => alg.game === state.selectedGame
-      );
-      const matchingRarities = rarityOptions.filter((rar) => rar.game === state.selectedGame);
-      const matchingMiscObj = miscellaneousOptions[getRandomArrayIndex(miscellaneousOptions)];
+    determineModifier(state, dispatch);
 
-      switch (state.selectedRunType) {
-        case "Superiority":
-          dispatch({
-            type: "SET_MODIFIER",
-            payload: {
-              name: `${superiorityOptions[getRandomArrayIndex(superiorityOptions)]} superiority`,
-              description: null
-            }
-          });
-          break;
-
-        case "Allegiance":
-          dispatch({
-            type: "SET_MODIFIER",
-            payload: {
-              name: `${
-                matchingAllegiances[getRandomArrayIndex(matchingAllegiances)].manufacturer
-              } items only`,
-              description: null
-            }
-          });
-          break;
-
-        case "Rarity":
-          dispatch({
-            type: "SET_MODIFIER",
-            payload: {
-              name: `${matchingRarities[getRandomArrayIndex(matchingRarities)].rarity} items only`,
-              description: null
-            }
-          });
-          break;
-
-        case "Miscellaneous":
-          dispatch({
-            type: "SET_MODIFIER",
-            payload: {
-              name: `${matchingMiscObj.name}`,
-              description: `${matchingMiscObj.description}`
-            }
-          });
-          break;
-
-        default:
-          break;
-      }
-    };
-
-    determineModifier();
-  }, [dispatch, state.currentStep, state.selectedGame, state.selectedRunType]);
+    // THESE ARE THE CORRECT DEPENDENCIES
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, state.selectedGame, state.selectedRunType]);
 
   return isCurrentStep ? (
     <InnerWrapper>

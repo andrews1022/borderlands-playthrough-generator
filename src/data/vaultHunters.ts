@@ -2,14 +2,14 @@ import {
   GAME_BORDERLANDS_1,
   GAME_BORDERLANDS_TPS,
   GAME_BORDERLANDS_2,
-  GAME_BORDERLANDS_3
+  GAME_BORDERLANDS_3,
 } from "../constants/games";
 
 // types
-type VaultHunter = {
+interface VaultHunter {
   name: string;
   game: string;
-};
+}
 
 const vaultHunters: VaultHunter[] = [
   // Borderlands 1
@@ -38,7 +38,7 @@ const vaultHunters: VaultHunter[] = [
   { name: "Amara", game: GAME_BORDERLANDS_3 },
   { name: "FL4K", game: GAME_BORDERLANDS_3 },
   { name: "Moze", game: GAME_BORDERLANDS_3 },
-  { name: "Zane", game: GAME_BORDERLANDS_3 }
+  { name: "Zane", game: GAME_BORDERLANDS_3 },
 ];
 
 export default vaultHunters;
