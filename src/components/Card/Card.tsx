@@ -12,9 +12,9 @@ import { Heading } from "../UI/Heading";
 import type { MainOption } from "../../types/types";
 
 // props type
-interface CardProps {
+type CardProps = {
   option: MainOption;
-}
+};
 
 const Card = ({ option }: CardProps) => {
   const generatorContext = useContext(GeneratorContext);

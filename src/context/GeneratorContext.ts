@@ -4,14 +4,14 @@ import type { Dispatch } from "react";
 import { initialGeneratorState } from "../reducers/generatorReducer";
 import type { GeneratorActions, GeneratorState } from "../reducers/generatorReducer";
 
-interface GeneratorContextType {
+type GeneratorContextType = {
   generatorState: GeneratorState;
   generatorDispatch: Dispatch<GeneratorActions>;
-}
+};
 
 const GeneratorContext = createContext<GeneratorContextType>({
   generatorState: initialGeneratorState,
-  generatorDispatch: () => null,
+  generatorDispatch: () => null
 });
 
 export default GeneratorContext;

@@ -4,9 +4,9 @@ import styled, { css } from "styled-components";
 type HeadingSize = "small" | "medium" | "large";
 
 // props type
-interface HeadingProps {
+type HeadingProps = {
   size: HeadingSize;
-}
+};
 
 const setHeadingSize = (size: HeadingSize) => {
   switch (size) {
